@@ -1,0 +1,270 @@
+<?php
+
+use App\Enums\FollowUpPriority;
+use App\Enums\FollowUpType;
+use App\Models\FollowUp;
+use App\Models\Lead;
+use App\Models\LeadNote;
+use App\Models\Property;
+use Flux\Flux;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Validation\Rule;
+use Livewire\Attributes\Computed;
+use Livewire\Attributes\Title;
+use Livewire\Component;
+
+new #[Title('Detalle de lead')] class extends Component
+{
+    public Lead $lead;
+    public string $note = '';
+    public array $followUp = [];
+    public ?int $propertyId = null;
+    public string $relationType = 'INTERESTED';
+
+    public function mount(Lead $lead): void
+    {
+        Gate::authorize('view', $lead);
+        $this->lead = $lead;
+        $this->resetFollowUp();
+    }
+
+    public function resetFollowUp(): void
+    {
+        $this->followUp = [
+            'type' => FollowUpType::Call->value,
+            'scheduled_at' => now()->addDay()->format('Y-m-d\TH:i'),
+            'priority' => FollowUpPriority::Normal->value,
+            'note' => '',
+        ];
+    }
+
+    public function addNote(): void
+    {
+        Gate::authorize('notes.create');
+
+        $validated = $this->validate(['note' => ['required', 'string', 'max:1000']]);
+
+        LeadNote::query()->create([
+            'lead_id' => $this->lead->id,
+            'user_id' => Auth::id(),
+            'content' => $validated['note'],
+        ]);
+
+        $this->note = '';
+        Flux::toast(variant: 'success', text: 'Nota agregada.');
+    }
+
+    public function createFollowUp(): void
+    {
+        Gate::authorize('followups.create');
+
+        $validated = $this->validate([
+            'followUp.type' => ['required', Rule::in(array_column(FollowUpType::cases(), 'value'))],
+            'followUp.scheduled_at' => ['required', 'date'],
+            'followUp.priority' => ['required', Rule::in(array_column(FollowUpPriority::cases(), 'value'))],
+            'followUp.note' => ['nullable', 'string', 'max:1000'],
+        ])['followUp'];
+
+        FollowUp::query()->create([
+            'lead_id' => $this->lead->id,
+            'assigned_user_id' => $this->lead->assigned_user_id ?: Auth::id(),
+            'type' => $validated['type'],
+            'scheduled_at' => $validated['scheduled_at'],
+            'priority' => $validated['priority'],
+            'note' => $validated['note'] ?: null,
+        ]);
+
+        $this->lead->update(['next_follow_up_at' => $validated['scheduled_at']]);
+        $this->resetFollowUp();
+        Flux::toast(variant: 'success', text: 'Seguimiento programado.');
+    }
+
+    public function completeFollowUp(int $followUpId): void
+    {
+        $followUp = FollowUp::query()->findOrFail($followUpId);
+        Gate::authorize('update', $followUp);
+
+        $followUp->update([
+            'status' => 'COMPLETED',
+            'completed_at' => now(),
+            'completed_by_user_id' => Auth::id(),
+        ]);
+        $this->lead->update(['last_contact_at' => now()]);
+        Flux::toast(variant: 'success', text: 'Seguimiento completado.');
+    }
+
+    public function attachProperty(): void
+    {
+        Gate::authorize('properties.assign_lead');
+
+        $validated = $this->validate([
+            'propertyId' => ['required', 'integer', 'exists:properties,id'],
+            'relationType' => ['required', Rule::in(['INTERESTED', 'SUGGESTED', 'VISITED', 'NEGOTIATING', 'REJECTED'])],
+        ]);
+
+        $property = Property::query()->findOrFail((int) $validated['propertyId']);
+        Gate::authorize('view', $property);
+
+        $this->lead->properties()->syncWithoutDetaching([
+            $property->id => [
+                'relation_type' => $validated['relationType'],
+                'created_by' => Auth::id(),
+                'created_at' => now(),
+            ],
+        ]);
+
+        $this->propertyId = null;
+        Flux::toast(variant: 'success', text: 'Propiedad asociada.');
+    }
+
+    #[Computed]
+    public function record(): Lead
+    {
+        return Lead::query()->with([
+            'source',
+            'pipelineStatus',
+            'assignedUser',
+            'notes.user',
+            'followUps.assignedUser',
+            'properties.type',
+        ])->findOrFail($this->lead->id);
+    }
+
+    #[Computed]
+    public function propertyOptions(): \Illuminate\Support\Collection
+    {
+        return Property::query()
+            ->visibleFor(Auth::user())
+            ->whereNot('status', 'SOLD')
+            ->orderBy('title')
+            ->limit(100)
+            ->get(['id', 'code', 'title', 'district']);
+    }
+};
+?>
+
+<section class="crm-page">
+    <header class="crm-page-header">
+        <div>
+            <p class="crm-eyebrow">Lead</p>
+            <h1 class="text-2xl font-bold text-[var(--color-crm-navy)]">{{ $this->record->full_name }}</h1>
+            <p class="text-sm text-[var(--color-crm-muted)]">{{ $this->record->phone }}{{ $this->record->email ? ' - '.$this->record->email : '' }}</p>
+        </div>
+        <div class="crm-actions">
+            <flux:button :href="route('leads.index')" icon="arrow-left" wire:navigate>Volver</flux:button>
+            <flux:button :href="route('pipeline.index')" icon="chart-bar" variant="primary" wire:navigate>Pipeline</flux:button>
+        </div>
+    </header>
+
+    <div class="crm-grid crm-grid--stats">
+        <article class="crm-card crm-stat"><span>Origen</span><strong class="!text-xl">{{ $this->record->source?->name ?? '-' }}</strong></article>
+        <article class="crm-card crm-stat"><span>Etapa</span><strong class="!text-xl">{{ $this->record->pipelineStatus?->name ?? '-' }}</strong></article>
+        <article class="crm-card crm-stat"><span>Asesor</span><strong class="!text-xl">{{ $this->record->assignedUser?->name ?? 'Sin asignar' }}</strong></article>
+        <article class="crm-card crm-stat"><span>Presupuesto</span><strong class="!text-xl">{{ $this->record->budgetDisplay() }}</strong></article>
+    </div>
+
+    <div class="grid gap-4 xl:grid-cols-[1.2fr_0.8fr]">
+        <section class="crm-card crm-panel-pad space-y-4">
+            <div>
+                <p class="crm-eyebrow">Datos</p>
+                <h2 class="text-lg font-bold text-[var(--color-crm-navy)]">Informacion comercial</h2>
+            </div>
+            <div class="crm-form-grid text-sm">
+                <div><span class="text-[var(--color-crm-muted)]">Distrito</span><strong class="block">{{ $this->record->district ?: '-' }}</strong></div>
+                <div><span class="text-[var(--color-crm-muted)]">Tipo buscado</span><strong class="block">{{ $this->record->property_type ?: '-' }}</strong></div>
+                <div><span class="text-[var(--color-crm-muted)]">Ingreso</span><strong class="block">{{ $this->record->entered_at?->format('d/m/Y H:i') }}</strong></div>
+                <div><span class="text-[var(--color-crm-muted)]">Proximo seguimiento</span><strong class="block">{{ $this->record->next_follow_up_at?->format('d/m/Y H:i') ?? '-' }}</strong></div>
+            </div>
+            <p class="rounded-lg bg-[var(--color-crm-bg-soft)] p-3 text-sm">{{ $this->record->notes ?: 'Sin notas generales.' }}</p>
+
+            <div class="border-t border-[var(--color-crm-border)] pt-4">
+                <p class="crm-eyebrow">Propiedades</p>
+                <form wire:submit="attachProperty" class="mt-3 grid gap-3 md:grid-cols-[1fr_180px_auto]">
+                    <flux:select wire:model="propertyId" label="Asociar propiedad">
+                        <option value="">Seleccionar</option>
+                        @foreach ($this->propertyOptions as $property)
+                            <option value="{{ $property->id }}">{{ $property->code }} - {{ $property->title }}</option>
+                        @endforeach
+                    </flux:select>
+                    <flux:select wire:model="relationType" label="Relacion">
+                        <option value="INTERESTED">Interesado</option>
+                        <option value="SUGGESTED">Sugerida</option>
+                        <option value="VISITED">Visitada</option>
+                        <option value="NEGOTIATING">Negociando</option>
+                        <option value="REJECTED">Rechazada</option>
+                    </flux:select>
+                    <div class="flex items-end"><flux:button type="submit" variant="primary">Asociar</flux:button></div>
+                </form>
+                <div class="mt-4 grid gap-3 md:grid-cols-2">
+                    @forelse ($this->record->properties as $property)
+                        <article class="rounded-lg border border-[var(--color-crm-border)] bg-white p-3">
+                            <a class="font-semibold text-[var(--color-crm-blue)]" href="{{ route('properties.show', $property) }}" wire:navigate>{{ $property->title }}</a>
+                            <p class="text-sm text-[var(--color-crm-muted)]">{{ $property->district }} - {{ $property->priceDisplay() }}</p>
+                            <span class="crm-badge crm-badge--info">{{ $property->pivot->relation_type }}</span>
+                        </article>
+                    @empty
+                        <div class="crm-empty md:col-span-2">Sin propiedades asociadas.</div>
+                    @endforelse
+                </div>
+            </div>
+        </section>
+
+        <aside class="space-y-4">
+            <section class="crm-card crm-panel-pad">
+                <p class="crm-eyebrow">Notas</p>
+                <form wire:submit="addNote" class="mt-3 space-y-3">
+                    <flux:textarea wire:model="note" label="Nueva nota" />
+                    <flux:button type="submit" variant="primary">Agregar nota</flux:button>
+                </form>
+                <div class="mt-4 space-y-3">
+                    @forelse ($this->record->notes->sortByDesc('created_at') as $noteItem)
+                        <article class="rounded-lg border border-[var(--color-crm-border)] bg-white p-3 text-sm">
+                            <p>{{ $noteItem->content }}</p>
+                            <span class="text-xs text-[var(--color-crm-muted)]">{{ $noteItem->user?->name }} - {{ $noteItem->created_at?->format('d/m/Y H:i') }}</span>
+                        </article>
+                    @empty
+                        <div class="crm-empty">Sin notas.</div>
+                    @endforelse
+                </div>
+            </section>
+
+            <section class="crm-card crm-panel-pad">
+                <p class="crm-eyebrow">Seguimientos</p>
+                <form wire:submit="createFollowUp" class="mt-3 space-y-3">
+                    <div class="grid gap-3 md:grid-cols-2">
+                        <flux:select wire:model="followUp.type" label="Tipo">
+                            @foreach (App\Enums\FollowUpType::cases() as $case)
+                                <option value="{{ $case->value }}">{{ $case->label() }}</option>
+                            @endforeach
+                        </flux:select>
+                        <flux:select wire:model="followUp.priority" label="Prioridad">
+                            @foreach (App\Enums\FollowUpPriority::cases() as $case)
+                                <option value="{{ $case->value }}">{{ $case->label() }}</option>
+                            @endforeach
+                        </flux:select>
+                    </div>
+                    <flux:input wire:model="followUp.scheduled_at" label="Fecha" type="datetime-local" />
+                    <flux:textarea wire:model="followUp.note" label="Nota" />
+                    <flux:button type="submit" variant="primary">Programar</flux:button>
+                </form>
+                <div class="mt-4 space-y-3">
+                    @forelse ($this->record->followUps->sortBy('scheduled_at') as $item)
+                        <article class="rounded-lg border border-[var(--color-crm-border)] bg-white p-3 text-sm">
+                            <div class="flex items-start justify-between gap-3">
+                                <div><strong>{{ $item->type }}</strong><p>{{ $item->scheduled_at?->format('d/m/Y H:i') }}</p></div>
+                                <span class="crm-badge {{ $item->status === 'COMPLETED' ? 'crm-badge--success' : 'crm-badge--warning' }}">{{ $item->statusLabel() }}</span>
+                            </div>
+                            @if ($item->note)<p class="mt-2 text-[var(--color-crm-muted)]">{{ $item->note }}</p>@endif
+                            @if ($item->status === 'PENDING')
+                                <flux:button size="sm" class="mt-2" wire:click="completeFollowUp({{ $item->id }})">Completar</flux:button>
+                            @endif
+                        </article>
+                    @empty
+                        <div class="crm-empty">Sin seguimientos.</div>
+                    @endforelse
+                </div>
+            </section>
+        </aside>
+    </div>
+</section>
