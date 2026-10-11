@@ -18,6 +18,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::livewire('sales', 'pages::sales.index')->middleware('can:sales.view')->name('sales.index');
     Route::livewire('commissions', 'pages::commissions.index')->middleware('can:commissions.view')->name('commissions.index');
     Route::livewire('reports', 'pages::reports.index')->middleware('can:reports.view')->name('reports.index');
+    Route::livewire('assistant', 'pages::assistant')->middleware('can:dashboard.view')->name('assistant');
     Route::livewire('users', 'pages::users.index')->middleware('can:users.view')->name('users.index');
     Route::livewire('roles', 'pages::roles.index')->middleware('can:roles.view')->name('roles.index');
     Route::livewire('permissions', 'pages::permissions.index')->middleware('can:permissions.view')->name('permissions.index');

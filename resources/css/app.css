@@ -7,6 +7,7 @@
 @import './layouts/estructura-app.css';
 @import './components/componentes-crm.css';
 @import './modules/panel.css';
+@import './modules/asistente.css';
 @import './modules/calendario.css';
 @import './modules/comisiones.css';
 @import './modules/configuracion.css';
