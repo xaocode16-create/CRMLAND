@@ -98,13 +98,6 @@
                         <x-desktop-user-menu :account-items="$accountItems" />
                     </div>
                 </div>
-
-                <nav class="crm-shell-breadcrumb" aria-label="Ruta de navegación">
-                    <i class="bi bi-house-door crm-breadcrumb-home" aria-hidden="true"></i>
-                    <a href="{{ route('dashboard') }}" wire:navigate>Inicio</a>
-                    <i class="bi bi-chevron-right" aria-hidden="true"></i>
-                    <span aria-current="page">{{ $currentPage }}</span>
-                </nav>
             </div>
         </header>
 
@@ -113,6 +106,18 @@
                 <flux:sidebar.nav>
                     @foreach ($navGroups as $heading => $items)
                         <flux:sidebar.group :heading="$heading" class="grid">
+                            @if ($heading === 'Administración' && auth()->user()?->isAdministrador())
+                                @php($activeRoleName = auth()->user()?->role?->name ?? 'Administrador')
+
+                                <div class="crm-sidebar-role-context" aria-label="Rol activo">
+                                    <span class="crm-sidebar-role-context__label">Rol activo</span>
+                                    <strong>
+                                        <i class="crm-sidebar-role-context__icon bi bi-shield-lock" aria-hidden="true"></i>
+                                        {{ $activeRoleName }}
+                                    </strong>
+                                </div>
+                            @endif
+
                             @foreach ($items as $item)
                                 <flux:sidebar.item
                                     :href="$item['href']"
@@ -132,7 +137,16 @@
                 <flux:spacer />
             </flux:sidebar>
 
-            {{ $slot }}
+            <div class="crm-workspace-content">
+                <nav class="crm-shell-breadcrumb" aria-label="Ruta de navegación">
+                    <i class="bi bi-house-door crm-breadcrumb-home" aria-hidden="true"></i>
+                    <a href="{{ route('dashboard') }}" wire:navigate>Inicio</a>
+                    <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                    <span aria-current="page">{{ $currentPage }}</span>
+                </nav>
+
+                {{ $slot }}
+            </div>
         </div>
 
         @persist('toast')

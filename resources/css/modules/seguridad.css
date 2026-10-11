@@ -1,0 +1,725 @@
+@layer components {
+    .crm-security-page {
+        display: grid;
+        gap: 1rem;
+        min-width: 0;
+        padding: 1rem;
+        background: linear-gradient(145deg, #f0f8fc 0%, #e8f1f7 100%);
+    }
+
+    .crm-security-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1rem 1.25rem;
+        border: 1px solid #d3e1ed;
+        border-radius: 0.8rem;
+        background: #fff;
+        box-shadow: 0 8px 24px rgb(25 75 112 / 6%);
+    }
+
+    .crm-security-header h1 {
+        margin: 0.15rem 0 0;
+        color: #0b315e;
+        font-size: clamp(1.8rem, 3vw, 2.35rem);
+        font-weight: 800;
+        letter-spacing: -0.04em;
+    }
+
+    .crm-security-header p:not(.crm-eyebrow) {
+        margin: 0.2rem 0 0;
+        color: #66809c;
+        font-size: 0.92rem;
+    }
+
+    .crm-security-role-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        min-height: 2.35rem;
+        padding: 0.55rem 0.8rem;
+        border: 1px solid #bfdcf5;
+        border-radius: 0.6rem;
+        background: #edf7ff;
+        color: #087df5;
+        font-size: 0.75rem;
+        font-weight: 800;
+        white-space: nowrap;
+    }
+
+    .crm-security-role-badge.is-purple {
+        border-color: #ddc7fb;
+        background: #f5efff;
+        color: #7b3fd1;
+    }
+
+    .crm-security-role-badge.is-green {
+        border-color: #bfe8d3;
+        background: #effbf4;
+        color: #00864e;
+    }
+
+    .crm-security-tabs {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.35rem;
+        padding: 0.35rem;
+        border: 1px solid #d8e5ee;
+        border-radius: 0.75rem;
+        background: #fff;
+        box-shadow: 0 6px 16px rgb(25 75 112 / 4%);
+    }
+
+    .crm-security-tabs a {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+        min-height: 4rem;
+        padding: 0.65rem 1rem;
+        border: 1px solid transparent;
+        border-radius: 0.55rem;
+        color: #203f65;
+        text-decoration: none;
+        transition: 160ms ease;
+    }
+
+    .crm-security-tabs a > i {
+        color: #314a6c;
+        font-size: 1.45rem;
+    }
+
+    .crm-security-tabs a span {
+        display: grid;
+        gap: 0.15rem;
+    }
+
+    .crm-security-tabs strong {
+        font-size: 0.86rem;
+    }
+
+    .crm-security-tabs small {
+        color: #7890a8;
+        font-size: 0.7rem;
+    }
+
+    .crm-security-tabs a:hover {
+        background: #f4faff;
+    }
+
+    .crm-security-tabs a.is-active {
+        border-color: #b9daf8;
+        background: linear-gradient(135deg, #eaf6ff, #f5fbff);
+        color: #087df5;
+        box-shadow: 0 4px 12px rgb(8 125 245 / 8%);
+    }
+
+    .crm-security-tabs a.is-active > i {
+        color: #087df5;
+    }
+
+    .crm-security-metrics {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0.75rem;
+    }
+
+    .crm-security-metric {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        min-width: 0;
+        padding: 0.85rem;
+        border: 1px solid #d5e3ed;
+        border-radius: 0.75rem;
+        background: #fff;
+        box-shadow: 0 7px 18px rgb(25 75 112 / 5%);
+    }
+
+    .crm-security-metric > span,
+    .crm-security-section-heading > span,
+    .crm-security-side-heading > span {
+        display: grid;
+        width: 2.3rem;
+        height: 2.3rem;
+        flex: 0 0 auto;
+        place-items: center;
+        border-radius: 0.65rem;
+        font-size: 1.05rem;
+    }
+
+    .crm-security-metric > div {
+        display: grid;
+        min-width: 0;
+        gap: 0.14rem;
+        flex: 1;
+    }
+
+    .crm-security-metric small {
+        overflow: hidden;
+        color: #71859c;
+        font-size: 0.69rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .crm-security-metric strong {
+        color: #163960;
+        font-size: 0.93rem;
+        font-weight: 800;
+    }
+
+    .crm-security-metric > i:last-child {
+        color: #a5b5c5;
+        font-size: 0.75rem;
+    }
+
+    .crm-security-metric.is-blue > span,
+    .crm-security-section-heading > span.is-blue,
+    .crm-security-side-heading > span.is-blue {
+        background: #e4f2ff;
+        color: #087df5;
+    }
+
+    .crm-security-metric.is-green > span,
+    .crm-security-section-heading > span.is-green,
+    .crm-security-side-heading > span.is-green {
+        background: #e4f8ed;
+        color: #00864e;
+    }
+
+    .crm-security-metric.is-amber > span,
+    .crm-security-section-heading > span.is-amber,
+    .crm-security-side-heading > span.is-amber {
+        background: #fff3dc;
+        color: #d88300;
+    }
+
+    .crm-security-metric.is-purple > span,
+    .crm-security-section-heading > span.is-purple,
+    .crm-security-side-heading > span.is-purple {
+        background: #efe5ff;
+        color: #813cf0;
+    }
+
+    .crm-security-content {
+        display: grid;
+        grid-template-columns: minmax(0, 1.65fr) minmax(18rem, 0.8fr);
+        gap: 1rem;
+        align-items: start;
+    }
+
+    .crm-security-main,
+    .crm-security-sidebar {
+        display: grid;
+        gap: 1rem;
+        min-width: 0;
+    }
+
+    .crm-security-card {
+        min-width: 0;
+        padding: 1rem;
+        border: 1px solid #d3e1ed;
+        border-radius: 0.8rem;
+        background: #fff;
+        box-shadow: 0 8px 20px rgb(25 75 112 / 5%);
+    }
+
+    .crm-security-section-heading,
+    .crm-security-side-heading {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.7rem;
+    }
+
+    .crm-security-section-heading > div,
+    .crm-security-side-heading h2 {
+        min-width: 0;
+        flex: 1;
+    }
+
+    .crm-security-section-heading h2,
+    .crm-security-side-heading h2 {
+        margin: 0;
+        color: #13365f;
+        font-size: 0.98rem;
+        font-weight: 800;
+    }
+
+    .crm-security-section-heading p {
+        margin: 0.18rem 0 0;
+        color: #71859c;
+        font-size: 0.72rem;
+    }
+
+    .crm-security-side-heading {
+        align-items: center;
+    }
+
+    .crm-security-side-heading a,
+    .crm-security-side-heading button {
+        flex: 0 0 auto;
+        border: 0;
+        background: transparent;
+        color: #087df5;
+        font-size: 0.68rem;
+        font-weight: 800;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .crm-security-password-form {
+        display: grid;
+        gap: 0.55rem;
+        margin-top: 1rem;
+    }
+
+    .crm-security-password-form [data-flux-field] {
+        min-width: 0;
+    }
+
+    .crm-security-password-meter {
+        display: flex;
+        align-items: center;
+        gap: 0.22rem;
+        margin-top: -0.15rem;
+    }
+
+    .crm-security-password-meter > span {
+        width: 3.15rem;
+        height: 0.28rem;
+        border-radius: 999px;
+        background: #42b879;
+    }
+
+    .crm-security-password-meter strong {
+        margin-left: 0.35rem;
+        color: #00864e;
+        font-size: 0.65rem;
+    }
+
+    .crm-security-help {
+        color: #8397aa;
+        font-size: 0.68rem;
+    }
+
+    .crm-security-form-actions,
+    .crm-security-button-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        align-items: center;
+        margin-top: 0.55rem;
+    }
+
+    .crm-security-inline-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        flex: 0 0 auto;
+        padding: 0.3rem 0.55rem;
+        border-radius: 999px;
+        font-size: 0.65rem;
+        font-weight: 800;
+    }
+
+    .crm-security-inline-status i {
+        font-size: 0.45rem;
+    }
+
+    .crm-security-inline-status.is-green {
+        background: #e5f8ed;
+        color: #00864e;
+    }
+
+    .crm-security-inline-status.is-amber {
+        background: #fff2d5;
+        color: #c37400;
+    }
+
+    .crm-security-method-card,
+    .crm-security-info-box {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        margin-top: 0.85rem;
+        padding: 0.75rem;
+        border: 1px solid #dbe8f1;
+        border-radius: 0.65rem;
+        background: #f8fbfd;
+    }
+
+    .crm-security-method-card > span {
+        display: grid;
+        width: 2.15rem;
+        height: 2.15rem;
+        flex: 0 0 auto;
+        place-items: center;
+        border-radius: 0.55rem;
+        background: #e5f3ff;
+        color: #087df5;
+    }
+
+    .crm-security-method-card > div,
+    .crm-security-info-box p {
+        display: grid;
+        gap: 0.12rem;
+        margin: 0;
+    }
+
+    .crm-security-method-card strong {
+        color: #234669;
+        font-size: 0.75rem;
+    }
+
+    .crm-security-method-card small,
+    .crm-security-info-box p {
+        color: #7890a8;
+        font-size: 0.68rem;
+    }
+
+    .crm-security-info-box {
+        align-items: flex-start;
+        border-color: #c4def7;
+        background: #eef8ff;
+        color: #087df5;
+    }
+
+    .crm-security-info-box > i {
+        margin-top: 0.05rem;
+    }
+
+    .crm-security-count-badge {
+        min-width: 1.7rem;
+        padding: 0.3rem 0.5rem;
+        border-radius: 999px;
+        background: #edf3f8;
+        color: #536f8d;
+        font-size: 0.68rem;
+        font-weight: 800;
+        text-align: center;
+    }
+
+    .crm-security-passkeys {
+        display: grid;
+        gap: 0.5rem;
+        margin-top: 0.85rem;
+    }
+
+    .crm-security-passkey {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        padding: 0.65rem 0;
+        border-bottom: 1px solid #edf2f6;
+    }
+
+    .crm-security-device-icon {
+        display: grid;
+        width: 2rem;
+        height: 2rem;
+        flex: 0 0 auto;
+        place-items: center;
+        border-radius: 0.55rem;
+        background: #edf5ff;
+        color: #087df5;
+    }
+
+    .crm-security-passkey > span:nth-child(2) {
+        display: grid;
+        min-width: 0;
+        flex: 1;
+        gap: 0.12rem;
+    }
+
+    .crm-security-passkey strong,
+    .crm-security-empty-passkeys strong {
+        overflow: hidden;
+        color: #1b3d65;
+        font-size: 0.75rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .crm-security-passkey small,
+    .crm-security-empty-passkeys small {
+        color: #7b90a5;
+        font-size: 0.66rem;
+    }
+
+    .crm-security-passkey > button {
+        border: 0;
+        background: transparent;
+        color: #e44b55;
+        cursor: pointer;
+    }
+
+    .crm-security-empty-passkeys {
+        display: grid;
+        justify-items: center;
+        gap: 0.35rem;
+        padding: 1rem;
+        border: 1px dashed #cbdde9;
+        border-radius: 0.65rem;
+        background: #fbfdff;
+        text-align: center;
+    }
+
+    .crm-security-empty-passkeys > span {
+        display: grid;
+        width: 2.4rem;
+        height: 2.4rem;
+        place-items: center;
+        border-radius: 50%;
+        background: #eaf5ff;
+        color: #087df5;
+        font-size: 1.1rem;
+    }
+
+    .crm-security-sessions,
+    .crm-security-alert-list,
+    .crm-security-activity,
+    .crm-security-recommendations {
+        display: grid;
+        margin-top: 0.7rem;
+    }
+
+    .crm-security-session,
+    .crm-security-alert-list > div,
+    .crm-security-activity > div,
+    .crm-security-recommendations > div {
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+        min-width: 0;
+        padding: 0.6rem 0;
+        border-bottom: 1px solid #edf2f6;
+    }
+
+    .crm-security-session > span,
+    .crm-security-alert-list > div > i,
+    .crm-security-activity > div > span:first-child {
+        display: grid;
+        width: 1.85rem;
+        height: 1.85rem;
+        flex: 0 0 auto;
+        place-items: center;
+        border-radius: 0.5rem;
+        background: #eef7ff;
+        color: #087df5;
+    }
+
+    .crm-security-session > div,
+    .crm-security-alert-list > div > span,
+    .crm-security-activity > div > span:nth-child(2),
+    .crm-security-recommendations > div > span {
+        display: grid;
+        min-width: 0;
+        flex: 1;
+        gap: 0.12rem;
+    }
+
+    .crm-security-session strong,
+    .crm-security-alert-list strong,
+    .crm-security-activity strong,
+    .crm-security-recommendations strong {
+        overflow: hidden;
+        color: #1b3d65;
+        font-size: 0.71rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .crm-security-session small,
+    .crm-security-alert-list small,
+    .crm-security-activity small,
+    .crm-security-recommendations small {
+        overflow: hidden;
+        color: #7b90a5;
+        font-size: 0.64rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .crm-security-session em {
+        flex: 0 0 auto;
+        padding: 0.25rem 0.4rem;
+        border-radius: 999px;
+        background: #f1f4f7;
+        color: #6c8198;
+        font-size: 0.58rem;
+        font-style: normal;
+        font-weight: 700;
+    }
+
+    .crm-security-session em.is-current {
+        background: #e3f8ed;
+        color: #00864e;
+    }
+
+    .crm-security-session > i:last-child {
+        color: #9aabbc;
+        font-size: 0.8rem;
+    }
+
+    .crm-security-danger-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        margin-top: 0.65rem;
+        border: 0;
+        background: transparent;
+        color: #e2434d;
+        font-size: 0.68rem;
+        font-weight: 800;
+        cursor: pointer;
+    }
+
+    .crm-security-switch {
+        position: relative;
+        display: inline-flex;
+        width: 2.45rem;
+        height: 1.4rem;
+        flex: 0 0 auto;
+        align-items: center;
+        padding: 0.15rem;
+        border: 0;
+        border-radius: 999px;
+        background: #cbd5df;
+        cursor: pointer;
+        transition: 160ms ease;
+    }
+
+    .crm-security-switch > span {
+        display: block;
+        width: 1.1rem;
+        height: 1.1rem;
+        border-radius: 999px;
+        background: #fff;
+        box-shadow: 0 1px 3px rgb(0 0 0 / 20%);
+        transition: 160ms ease;
+    }
+
+    .crm-security-switch.is-on {
+        justify-content: flex-end;
+        background: #087df5;
+    }
+
+    .crm-security-activity time {
+        flex: 0 0 auto;
+        color: #899bad;
+        font-size: 0.6rem;
+        white-space: nowrap;
+    }
+
+    .crm-security-recommendations > div > i {
+        width: 1.1rem;
+        flex: 0 0 auto;
+        font-size: 0.95rem;
+        text-align: center;
+    }
+
+    .crm-security-recommendations > div > i.is-green { color: #00965a; }
+    .crm-security-recommendations > div > i.is-amber { color: #d88300; }
+    .crm-security-recommendations > div > i.is-blue { color: #087df5; }
+
+    .crm-security-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.75rem 0.25rem 0;
+        color: #6e849c;
+        font-size: 0.68rem;
+    }
+
+    .crm-security-footer span {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+    }
+
+    .crm-security-footer i,
+    .crm-security-footer a {
+        color: #087df5;
+    }
+
+    .crm-security-footer a {
+        font-weight: 800;
+        text-decoration: none;
+    }
+
+    .crm-security-modal {
+        max-width: min(42rem, calc(100vw - 2rem));
+    }
+
+    .crm-security-modal-content {
+        display: grid;
+        gap: 1rem;
+    }
+
+    .crm-security-modal-content > div:first-child {
+        display: grid;
+        gap: 0.35rem;
+    }
+
+    .crm-security-modal-actions {
+        display: flex;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        padding-top: 0.4rem;
+        border-top: 1px solid #edf2f6;
+    }
+
+    .crm-security-modal-form {
+        display: grid;
+        gap: 0.65rem;
+    }
+
+    @media (max-width: 1120px) {
+        .crm-security-content {
+            grid-template-columns: 1fr;
+        }
+
+        .crm-security-sidebar {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .crm-security-sidebar > section:first-child,
+        .crm-security-sidebar > section:last-child {
+            grid-column: span 2;
+        }
+    }
+
+    @media (max-width: 720px) {
+        .crm-security-page {
+            padding: 0.7rem;
+        }
+
+        .crm-security-header {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        .crm-security-tabs,
+        .crm-security-metrics,
+        .crm-security-sidebar {
+            grid-template-columns: 1fr;
+        }
+
+        .crm-security-tabs a {
+            min-height: 3.25rem;
+        }
+
+        .crm-security-sidebar > section:first-child,
+        .crm-security-sidebar > section:last-child {
+            grid-column: auto;
+        }
+
+        .crm-security-footer {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+    }
+}

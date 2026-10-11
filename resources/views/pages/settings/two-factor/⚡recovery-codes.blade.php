@@ -46,13 +46,13 @@ new class extends Component {
 }; ?>
 
 <div
-    class="py-6 space-y-6 border shadow-sm rounded-xl border-zinc-200 dark:border-white/10"
+    class="dark:border-white/10 crm-configuracion-div-05"
     wire:cloak
     x-data="{ showRecoveryCodes: false }"
 >
-    <div class="px-6 space-y-2">
-        <div class="flex items-center gap-2">
-            <flux:icon.lock-closed variant="outline" class="size-4"/>
+    <div class="crm-configuracion-div-06">
+        <div class="crm-configuracion-div-07">
+            <flux:icon.lock-closed variant="outline" class="crm-configuracion-flux-icon-01"/>
                 <flux:heading size="lg" level="3">Codigos de recuperacion</flux:heading>
         </div>
         <flux:text variant="subtle">
@@ -60,8 +60,8 @@ new class extends Component {
         </flux:text>
     </div>
 
-    <div class="px-6">
-        <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+    <div class="crm-configuracion-div-08">
+        <div class="sm:flex-row sm:items-center sm:justify-between crm-configuracion-div-09">
             <flux:button
                 x-show="!showRecoveryCodes"
                 icon="eye"
@@ -102,31 +102,31 @@ new class extends Component {
             x-show="showRecoveryCodes"
             x-transition
             id="recovery-codes-section"
-            class="relative overflow-hidden"
+            class="crm-configuracion-div-10"
             x-bind:aria-hidden="!showRecoveryCodes"
         >
-            <div class="mt-3 space-y-3">
+            <div class="crm-configuracion-div-11">
                 @error('recoveryCodes')
                     <flux:callout variant="danger" icon="x-circle" heading="{{$message}}"/>
                 @enderror
 
                 @if (filled($recoveryCodes))
                     <div
-                        class="grid gap-1 p-4 font-mono text-sm rounded-lg bg-zinc-100 dark:bg-white/5"
+                        class="dark:bg-white/5 crm-configuracion-div-12"
                         role="list"
                         aria-label="Codigos de recuperacion"
                     >
                         @foreach($recoveryCodes as $code)
                             <div
                                 role="listitem"
-                                class="select-text"
-                                wire:loading.class="opacity-50 animate-pulse"
+                                class="crm-configuracion-div-13"
+                                wire:loading.class="crm-configuracion-div-14"
                             >
                                 {{ $code }}
                             </div>
                         @endforeach
                     </div>
-                    <flux:text variant="subtle" class="text-xs">
+                    <flux:text variant="subtle" class="crm-configuracion-flux-text-01">
                         Cada codigo de recuperacion puede usarse una sola vez y se eliminara despues. Si necesitas mas, haz clic en Regenerar codigos.
                     </flux:text>
                 @endif

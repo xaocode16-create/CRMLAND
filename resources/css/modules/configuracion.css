@@ -1,0 +1,295 @@
+
+@layer components {
+    .crm-configuracion-div-01 {
+        @apply flex items-start;
+    }
+
+    .crm-configuracion-div-02 {
+        @apply me-10 w-full pb-4;
+    }
+
+    .crm-configuracion-div-03 {
+        @apply flex-1 self-stretch;
+    }
+
+    .crm-configuracion-div-04 {
+        @apply mt-5 w-full max-w-lg;
+    }
+
+    .crm-configuracion-div-05 {
+        @apply py-6 space-y-6 border shadow-sm rounded-xl border-zinc-200;
+    }
+
+    .crm-configuracion-div-06 {
+        @apply px-6 space-y-2;
+    }
+
+    .crm-configuracion-div-07 {
+        @apply flex items-center gap-2;
+    }
+
+    .crm-configuracion-flux-icon-01 {
+        @apply size-4;
+    }
+
+    .crm-configuracion-div-08 {
+        @apply px-6;
+    }
+
+    .crm-configuracion-div-09 {
+        @apply flex flex-col gap-3;
+    }
+
+    .crm-configuracion-div-10 {
+        @apply relative overflow-hidden;
+    }
+
+    .crm-configuracion-div-11 {
+        @apply mt-3 space-y-3;
+    }
+
+    .crm-configuracion-div-12 {
+        @apply grid gap-1 p-4 font-mono text-sm rounded-lg bg-zinc-100;
+    }
+
+    .crm-configuracion-div-13 {
+        @apply select-text;
+    }
+
+    .crm-configuracion-div-14 {
+        @apply opacity-50 animate-pulse;
+    }
+
+    .crm-configuracion-flux-text-01 {
+        @apply text-xs;
+    }
+
+    .crm-configuracion-section-01 {
+        @apply w-full;
+    }
+
+    .crm-configuracion-flux-heading-01 {
+        @apply sr-only;
+    }
+
+    .crm-configuracion-section-02 {
+        @apply mt-10 space-y-6;
+    }
+
+    .crm-configuracion-div-15 {
+        @apply relative mb-5;
+    }
+
+    .crm-configuracion-elemento-01 {
+        @apply max-w-lg;
+    }
+
+    .crm-configuracion-form-01 {
+        @apply space-y-6;
+    }
+
+    .crm-configuracion-div-16 {
+        @apply flex justify-end space-x-2;
+    }
+
+    .crm-configuracion-flux-link-01 {
+        @apply cursor-pointer;
+    }
+
+    .crm-configuracion-span-01 {
+        @apply font-medium text-green-700;
+    }
+
+    .crm-configuracion-form-02 {
+        @apply mt-6 space-y-6;
+    }
+
+    .crm-configuracion-div-17 {
+        @apply flex items-center gap-4;
+    }
+
+    .crm-configuracion-section-03 {
+        @apply mt-12;
+    }
+
+    .crm-configuracion-div-18 {
+        @apply flex flex-col w-full mx-auto space-y-6 text-sm;
+    }
+
+    .crm-configuracion-div-20 {
+        @apply flex justify-start;
+    }
+
+    .crm-configuracion-div-21 {
+        @apply mt-6 flex flex-col w-full mx-auto space-y-6 text-sm;
+    }
+
+    .crm-configuracion-div-22 {
+        @apply border rounded-lg border-zinc-200 overflow-hidden;
+    }
+
+    .crm-configuracion-div-23 {
+        @apply flex size-10 shrink-0 items-center justify-center rounded-xl bg-zinc-100;
+    }
+
+    .crm-configuracion-flux-icon-02 {
+        @apply size-5 text-zinc-500;
+    }
+
+    .crm-configuracion-div-24 {
+        @apply space-y-1;
+    }
+
+    .crm-configuracion-div-25 {
+        @apply flex items-center gap-2.5;
+    }
+
+    .crm-configuracion-p-02 {
+        @apply font-medium tracking-tight;
+    }
+
+    .crm-configuracion-p-03 {
+        @apply text-zinc-500 text-xs;
+    }
+
+    .crm-configuracion-span-02 {
+        @apply opacity-50 mx-1;
+    }
+
+    .crm-configuracion-flux-button-01 {
+        @apply text-red-500;
+    }
+
+    .crm-configuracion-div-26 {
+        @apply p-8 text-center;
+    }
+
+    .crm-configuracion-div-27 {
+        @apply mx-auto mb-4 flex size-14 items-center justify-center rounded-2xl bg-zinc-100;
+    }
+
+    .crm-configuracion-flux-icon-03 {
+        @apply size-7 text-zinc-400;
+    }
+
+    .crm-configuracion-p-04 {
+        @apply font-medium;
+    }
+
+    .crm-configuracion-flux-text-02 {
+        @apply mt-1;
+    }
+
+    .crm-configuracion-flux-modal-01 {
+        @apply max-w-md;
+    }
+
+    .crm-configuracion-div-28 {
+        @apply space-y-2;
+    }
+
+    .crm-configuracion-div-29 {
+        @apply flex gap-3 justify-end;
+    }
+
+    .crm-configuracion-div-30 {
+        @apply flex flex-col items-center space-y-4;
+    }
+
+    .crm-configuracion-div-31 {
+        @apply p-0.5 w-auto rounded-full border border-stone-100 bg-white shadow-sm;
+    }
+
+    .crm-configuracion-div-32 {
+        @apply p-2.5 rounded-full border border-stone-200 overflow-hidden bg-stone-100 relative;
+    }
+
+    .crm-configuracion-div-33 {
+        @apply flex items-stretch absolute inset-0 w-full h-full divide-x divide-stone-200 justify-around opacity-50;
+    }
+
+    .crm-configuracion-div-34 {
+        @apply flex flex-col items-stretch absolute w-full h-full divide-y inset-0 divide-stone-200 justify-around opacity-50;
+    }
+
+    .crm-configuracion-flux-icon-04 {
+        @apply relative z-20;
+    }
+
+    .crm-configuracion-div-35 {
+        @apply space-y-2 text-center;
+    }
+
+    .crm-configuracion-div-36 {
+        @apply flex flex-col items-center space-y-3 justify-center;
+    }
+
+    .crm-configuracion-flux-otp-01 {
+        @apply mx-auto;
+    }
+
+    .crm-configuracion-div-37 {
+        @apply flex items-center space-x-3;
+    }
+
+    .crm-configuracion-flux-button-02 {
+        @apply flex-1;
+    }
+
+    .crm-configuracion-div-38 {
+        @apply flex justify-center;
+    }
+
+    .crm-configuracion-div-39 {
+        @apply relative w-64 overflow-hidden border rounded-lg border-stone-200 aspect-square;
+    }
+
+    .crm-configuracion-div-40 {
+        @apply absolute inset-0 flex items-center justify-center bg-white animate-pulse;
+    }
+
+    .crm-configuracion-div-41 {
+        @apply flex items-center justify-center h-full p-4;
+    }
+
+    .crm-configuracion-div-42 {
+        @apply bg-white p-3 rounded;
+    }
+
+    .crm-configuracion-div-43 {
+        @apply relative flex items-center justify-center w-full;
+    }
+
+    .crm-configuracion-div-44 {
+        @apply absolute inset-0 w-full h-px top-1/2 bg-stone-200;
+    }
+
+    .crm-configuracion-span-03 {
+        @apply relative px-2 text-sm bg-white text-stone-600;
+    }
+
+    .crm-configuracion-div-45 {
+        @apply flex items-center space-x-2;
+    }
+
+    .crm-configuracion-div-46 {
+        @apply flex items-stretch w-full border rounded-xl;
+    }
+
+    .crm-configuracion-div-47 {
+        @apply flex items-center justify-center w-full p-3 bg-stone-100;
+    }
+
+    .crm-configuracion-input-01 {
+        @apply w-full p-3 bg-transparent outline-none text-stone-900;
+    }
+
+    .crm-configuracion-button-01 {
+        @apply px-3 transition-colors border-l cursor-pointer border-stone-200;
+    }
+
+    .crm-configuracion-flux-icon-05 {
+        @apply text-green-500;
+    }
+
+}

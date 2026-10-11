@@ -49,6 +49,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
     'supervisor_user_id',
     'phone',
     'avatar',
+    'preferences',
     'status',
     'session_version',
     'last_login_at',
@@ -75,6 +76,7 @@ class User extends Authenticatable implements MustVerifyEmail, PasskeyUser
             'email_verified_at' => 'datetime',
             'last_login_at' => 'datetime',
             'password' => 'hashed',
+            'preferences' => 'array',
             'session_version' => 'integer',
         ];
     }

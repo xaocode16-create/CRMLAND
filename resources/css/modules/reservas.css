@@ -1,0 +1,632 @@
+@layer components {
+    .crm-reservations-page {
+        background: var(--color-crm-bg);
+    }
+
+    .crm-reservation-role {
+        display: inline-flex;
+        margin-top: 0.45rem;
+        padding: 0.22rem 0.6rem;
+        border-radius: 999px;
+        background: rgb(0 140 255 / 9%);
+        color: var(--color-crm-blue-strong);
+        font-size: 0.72rem;
+        font-weight: 700;
+    }
+
+    .crm-reservation-stats {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .crm-reservation-stat {
+        display: block;
+        width: 100%;
+        border: 1px solid var(--color-crm-border);
+        text-align: left;
+        transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    .crm-reservation-stat:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 28px rgb(20 40 60 / 11%);
+    }
+
+    .crm-reservation-stat span,
+    .crm-reservation-stat small {
+        display: block;
+    }
+
+    .crm-reservation-stat strong {
+        margin: 0.6rem 0 0.35rem;
+    }
+
+    .crm-reservation-stat small {
+        color: var(--color-crm-muted);
+        font-size: 0.75rem;
+    }
+
+    .crm-reservation-stat--blue { border-top: 3px solid var(--color-crm-blue); }
+    .crm-reservation-stat--amber { border-top: 3px solid #f0a500; }
+    .crm-reservation-stat--red { border-top: 3px solid #ef4d62; }
+    .crm-reservation-stat--green { border-top: 3px solid #13a06b; }
+
+    .crm-reservation-filters {
+        padding: 1rem;
+    }
+
+    .crm-reservation-filters__header,
+    .crm-reservation-side-card__heading,
+    .crm-reservation-form-section__heading,
+    .crm-reservation-summary-card__heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+    }
+
+    .crm-reservation-filters__header {
+        margin-bottom: 0.75rem;
+    }
+
+    .crm-reservations-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1rem;
+        min-width: 0;
+    }
+
+    .crm-reservation-table-heading {
+        align-items: flex-end;
+    }
+
+    .crm-reservation-table {
+        min-width: 1120px;
+    }
+
+    .crm-reservation-table td .crm-muted-caption,
+    .crm-reservation-table td > .crm-muted-caption,
+    .crm-reservation-table td a + .crm-muted-caption {
+        display: block;
+        margin-top: 0.18rem;
+    }
+
+    .crm-reservation-property-cell {
+        display: flex;
+        min-width: 185px;
+        align-items: center;
+        gap: 0.6rem;
+    }
+
+    .crm-reservation-property-cell img,
+    .crm-reservation-property-placeholder {
+        display: grid;
+        width: 2.6rem;
+        height: 2.6rem;
+        flex: 0 0 auto;
+        place-items: center;
+        overflow: hidden;
+        border-radius: 0.45rem;
+        background: var(--color-crm-bg-soft);
+        color: var(--color-crm-blue);
+        object-fit: cover;
+    }
+
+    .crm-reservation-property-cell img {
+        object-fit: cover;
+    }
+
+    .crm-reservation-property-cell > div,
+    .crm-reservation-side-item > div,
+    .crm-reservation-property-summary > div {
+        min-width: 0;
+    }
+
+    .crm-reservation-expiring {
+        color: var(--color-crm-danger);
+        font-weight: 700;
+    }
+
+    .crm-reservation-row-actions {
+        min-width: 9rem;
+    }
+
+    .crm-reservation-sidebar {
+        display: grid;
+        align-content: start;
+        gap: 1rem;
+    }
+
+    .crm-reservation-side-card {
+        padding: 1rem;
+    }
+
+    .crm-reservation-side-card h2 {
+        color: var(--color-crm-navy);
+        font-size: 0.95rem;
+        font-weight: 800;
+    }
+
+    .crm-reservation-side-action {
+        padding: 0.25rem 0.35rem;
+        border: 0;
+        border-radius: 0.35rem;
+        background: transparent;
+        color: var(--color-crm-blue);
+        font-size: 0.82rem;
+        font-weight: 800;
+        line-height: 1.2;
+        cursor: pointer;
+        transition: background-color 160ms ease, color 160ms ease;
+    }
+
+    .crm-reservation-side-action:hover,
+    .crm-reservation-side-action:focus-visible {
+        background: rgb(0 140 255 / 10%);
+        color: var(--color-crm-blue-strong);
+        outline: none;
+    }
+
+    .crm-reservation-side-list,
+    .crm-reservation-activity {
+        display: grid;
+        gap: 0.8rem;
+        margin-top: 1rem;
+    }
+
+    .crm-reservation-side-item {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 0.55rem;
+    }
+
+    .crm-reservation-side-item strong,
+    .crm-reservation-side-item span,
+    .crm-reservation-side-item time {
+        display: block;
+    }
+
+    .crm-reservation-side-item strong {
+        overflow: hidden;
+        color: var(--color-crm-navy);
+        font-size: 0.8rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .crm-reservation-side-item span,
+    .crm-reservation-side-item time {
+        color: var(--color-crm-muted);
+        font-size: 0.7rem;
+    }
+
+    .crm-reservation-side-item time {
+        color: var(--color-crm-danger);
+        font-weight: 700;
+        text-align: right;
+        white-space: nowrap;
+    }
+
+    .crm-reservation-side-dot {
+        width: 0.55rem;
+        height: 0.55rem;
+        border-radius: 999px;
+        background: #ef4d62;
+        box-shadow: 0 0 0 4px rgb(239 77 98 / 12%);
+    }
+
+    .crm-reservation-alert {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.7rem;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--color-crm-border);
+    }
+
+    .crm-reservation-alert:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .crm-reservation-alert i {
+        color: var(--color-crm-danger);
+        font-size: 1.05rem;
+    }
+
+    .crm-reservation-alert strong,
+    .crm-reservation-alert span {
+        display: block;
+    }
+
+    .crm-reservation-alert strong {
+        color: var(--color-crm-navy);
+        font-size: 0.8rem;
+    }
+
+    .crm-reservation-alert span,
+    .crm-reservation-role-card p {
+        color: var(--color-crm-muted);
+        font-size: 0.75rem;
+    }
+
+    .crm-reservation-role-card h2 {
+        margin: 0.25rem 0;
+    }
+
+    .crm-reservation-activity > div {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+    }
+
+    .crm-reservation-activity .crm-user-avatar {
+        width: 2rem;
+        height: 2rem;
+        font-size: 0.65rem;
+    }
+
+    .crm-reservation-activity p {
+        margin: 0;
+        color: var(--color-crm-muted);
+        font-size: 0.75rem;
+    }
+
+    .crm-reservation-activity strong,
+    .crm-reservation-activity small {
+        display: block;
+        color: var(--color-crm-navy);
+    }
+
+    .crm-reservation-activity small {
+        margin-top: 0.1rem;
+        color: var(--color-crm-muted);
+        font-size: 0.68rem;
+    }
+
+    .crm-reservation-modal {
+        position: fixed;
+        z-index: 1000;
+        inset: 0;
+        overflow-y: auto;
+        padding: 1rem;
+        background: rgb(2 24 53 / 58%);
+        backdrop-filter: blur(3px);
+    }
+
+    .crm-reservation-modal__dialog {
+        width: min(1400px, 100%);
+        min-height: calc(100vh - 2rem);
+        margin: 0 auto;
+        border: 1px solid rgb(215 223 232 / 75%);
+        border-radius: 0.75rem;
+        background: var(--color-crm-bg);
+        box-shadow: 0 24px 70px rgb(2 24 53 / 28%);
+    }
+
+    .crm-reservation-modal__header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1.25rem 1.5rem;
+        border-bottom: 1px solid var(--color-crm-border);
+        background: white;
+    }
+
+    .crm-reservation-form {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .crm-reservation-form__main {
+        display: grid;
+        gap: 1rem;
+        min-width: 0;
+    }
+
+    .crm-reservation-form-section {
+        display: grid;
+        gap: 1rem;
+        padding: 1rem;
+        border: 1px solid var(--color-crm-border);
+        border-radius: 0.7rem;
+        background: white;
+    }
+
+    .crm-reservation-form-section__heading {
+        justify-content: flex-start;
+    }
+
+    .crm-reservation-form-section__heading h3 {
+        color: var(--color-crm-navy);
+        font-size: 1rem;
+        font-weight: 800;
+    }
+
+    .crm-reservation-form-icon {
+        display: grid;
+        width: 2rem;
+        height: 2rem;
+        flex: 0 0 auto;
+        place-items: center;
+        border-radius: 0.55rem;
+        background: rgb(0 140 255 / 10%);
+        color: var(--color-crm-blue-strong);
+    }
+
+    .crm-reservation-approval-toggle {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+    }
+
+    .crm-reservation-property-summary {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 0.75rem;
+        border: 1px solid rgb(8 118 71 / 18%);
+        border-radius: 0.6rem;
+        background: rgb(8 118 71 / 6%);
+    }
+
+    .crm-reservation-property-summary img,
+    .crm-reservation-property-summary .crm-reservation-property-placeholder {
+        width: 4.2rem;
+        height: 4.2rem;
+        flex: 0 0 auto;
+        border-radius: 0.55rem;
+        object-fit: cover;
+    }
+
+    .crm-reservation-property-summary strong,
+    .crm-reservation-property-summary span,
+    .crm-reservation-property-summary small {
+        display: block;
+    }
+
+    .crm-reservation-property-summary strong {
+        color: var(--color-crm-navy);
+    }
+
+    .crm-reservation-property-summary span {
+        color: var(--color-crm-muted);
+        font-size: 0.76rem;
+    }
+
+    .crm-reservation-property-summary small {
+        margin-top: 0.2rem;
+        color: var(--color-crm-success);
+        font-size: 0.72rem;
+        font-weight: 700;
+    }
+
+    .crm-reservation-upload {
+        display: grid;
+        min-height: 8rem;
+        place-items: center;
+        align-content: center;
+        gap: 0.3rem;
+        padding: 1rem;
+        border: 1px dashed var(--color-crm-blue);
+        border-radius: 0.65rem;
+        background: rgb(0 140 255 / 4%);
+        color: var(--color-crm-blue-strong);
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .crm-reservation-upload input {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        opacity: 0;
+    }
+
+    .crm-reservation-upload i {
+        font-size: 1.7rem;
+    }
+
+    .crm-reservation-upload span {
+        color: var(--color-crm-muted);
+        font-size: 0.72rem;
+    }
+
+    .crm-reservation-upload-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+
+    .crm-reservation-upload-list span {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.35rem 0.55rem;
+        border-radius: 0.4rem;
+        background: var(--color-crm-bg-soft);
+        color: var(--color-crm-muted);
+        font-size: 0.72rem;
+    }
+
+    .crm-reservation-form__summary {
+        display: grid;
+        align-content: start;
+        gap: 1rem;
+    }
+
+    .crm-reservation-summary-card {
+        display: grid;
+        gap: 1rem;
+        padding: 1rem;
+        border: 1px solid var(--color-crm-border);
+        border-radius: 0.7rem;
+        background: white;
+    }
+
+    .crm-reservation-summary-card__heading {
+        justify-content: flex-start;
+        color: var(--color-crm-blue-strong);
+    }
+
+    .crm-reservation-summary-card__heading h3 {
+        color: var(--color-crm-navy);
+        font-size: 0.95rem;
+        font-weight: 800;
+    }
+
+    .crm-reservation-summary-block {
+        display: grid;
+        gap: 0.2rem;
+        padding-bottom: 0.85rem;
+        border-bottom: 1px solid var(--color-crm-border);
+    }
+
+    .crm-reservation-summary-block p {
+        margin: 0 0 0.2rem;
+        color: var(--color-crm-blue-strong);
+        font-size: 0.72rem;
+        font-weight: 800;
+    }
+
+    .crm-reservation-summary-block strong {
+        color: var(--color-crm-navy);
+        font-size: 0.85rem;
+    }
+
+    .crm-reservation-summary-block span,
+    .crm-reservation-summary-block dt,
+    .crm-reservation-summary-block dd {
+        color: var(--color-crm-muted);
+        font-size: 0.74rem;
+    }
+
+    .crm-reservation-summary-block dl {
+        display: grid;
+        gap: 0.35rem;
+        margin: 0;
+    }
+
+    .crm-reservation-summary-block dl div {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.75rem;
+    }
+
+    .crm-reservation-summary-block dd {
+        margin: 0;
+        color: var(--color-crm-navy);
+        font-weight: 700;
+        text-align: right;
+    }
+
+    .crm-reservation-summary-empty {
+        color: var(--color-crm-muted);
+        font-size: 0.78rem;
+    }
+
+    .crm-reservation-summary-availability {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.55rem;
+        padding: 0.7rem;
+        border-radius: 0.5rem;
+        background: rgb(8 118 71 / 8%);
+        color: var(--color-crm-success);
+    }
+
+    .crm-reservation-summary-availability strong,
+    .crm-reservation-summary-availability span {
+        display: block;
+    }
+
+    .crm-reservation-summary-availability strong {
+        font-size: 0.78rem;
+    }
+
+    .crm-reservation-summary-availability span {
+        font-size: 0.7rem;
+    }
+
+    .crm-reservation-rules ol {
+        display: grid;
+        gap: 0.55rem;
+        margin: 0;
+        padding-left: 1.15rem;
+        color: var(--color-crm-muted);
+        font-size: 0.75rem;
+    }
+
+    .crm-reservation-form__footer {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.6rem;
+        padding-top: 0.2rem;
+    }
+
+    @media (min-width: 1100px) {
+        .crm-reservations-layout {
+            grid-template-columns: minmax(0, 1.55fr) minmax(270px, 0.65fr);
+        }
+
+        .crm-reservation-form {
+            grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.7fr);
+        }
+
+        .crm-reservation-form__footer {
+            grid-column: 1 / -1;
+        }
+
+        .crm-reservation-form__summary {
+            position: sticky;
+            top: 0;
+            align-self: start;
+        }
+    }
+
+    @media (max-width: 900px) {
+        .crm-reservation-stats {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @media (max-width: 600px) {
+        .crm-reservation-stats {
+            grid-template-columns: 1fr;
+        }
+
+        .crm-reservation-modal {
+            padding: 0;
+        }
+
+        .crm-reservation-modal__dialog {
+            min-height: 100vh;
+            border-radius: 0;
+        }
+
+        .crm-reservation-modal__header {
+            padding: 1rem;
+        }
+
+        .crm-reservation-form {
+            padding: 0.75rem;
+        }
+
+        .crm-reservation-form__footer {
+            position: sticky;
+            bottom: 0;
+            z-index: 2;
+            padding: 0.75rem;
+            background: var(--color-crm-bg);
+        }
+
+        .crm-reservation-form__footer > * {
+            flex: 1 1 0;
+        }
+    }
+}

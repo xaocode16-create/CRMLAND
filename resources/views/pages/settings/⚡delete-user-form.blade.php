@@ -4,8 +4,8 @@ use Livewire\Component;
 
 new class extends Component {}; ?>
 
-<section class="mt-10 space-y-6">
-    <div class="relative mb-5">
+<section class="crm-configuracion-section-02">
+    <div class="crm-configuracion-div-15">
         <flux:heading>Eliminar cuenta</flux:heading>
         <flux:subheading>Elimina tu cuenta y todos sus recursos</flux:subheading>
     </div>

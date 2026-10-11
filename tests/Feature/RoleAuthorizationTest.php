@@ -56,7 +56,15 @@ test('global header keeps the same action slots across roles', function () {
         $this->actingAs($user)
             ->get(route('dashboard'))
             ->assertSee('crm-shell-header', false)
-            ->assertSee('crm-shell-breadcrumb', false)
+            ->assertSeeInOrder([
+                'crm-shell-header',
+                'crm-workspace',
+                'crm-sidebar',
+                'crm-workspace-content',
+                'crm-shell-breadcrumb',
+                'crm-main',
+            ], false)
+            ->assertSee('Actividad actual del equipo y oportunidades recientes.')
             ->assertSee('Asistente IA')
             ->assertDontSee('bi-plus-lg', false)
             ->assertSee('bi-bell', false)

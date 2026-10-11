@@ -84,8 +84,8 @@ new #[Title('Comisiones')] class extends Component
     <header class="crm-page-header">
         <div>
             <p class="crm-eyebrow">Operaciones</p>
-            <h1 class="text-2xl font-bold text-[var(--color-crm-navy)]">Comisiones</h1>
-            <p class="text-sm text-[var(--color-crm-muted)]">Control de comisiones pendientes, aprobadas y pagadas.</p>
+            <h1 class="crm-module-title">Comisiones</h1>
+            <p class="crm-module-description">Control de comisiones pendientes, aprobadas y pagadas.</p>
         </div>
         <div class="crm-actions">
             <flux:select wire:model.live="status" label="Estado">
@@ -112,15 +112,15 @@ new #[Title('Comisiones')] class extends Component
                         <tr wire:key="commission-{{ $commission->id }}">
                             <td>
                                 {{ $commission->sale?->lead?->full_name ?? 'Venta #'.$commission->sale_id }}<br>
-                                <span class="text-xs text-[var(--color-crm-muted)]">{{ $commission->sale?->property?->title ?? 'Sin propiedad' }}</span>
+                                <span class="crm-muted-caption">{{ $commission->sale?->property?->title ?? 'Sin propiedad' }}</span>
                             </td>
                             <td>{{ $commission->advisor?->name ?? '-' }}</td>
                             <td>{{ number_format((float) $commission->percentage, 3) }}%</td>
                             <td>{{ $commission->amountDisplay() }}</td>
                             <td><span class="crm-badge {{ $commission->status === 'PAID' ? 'crm-badge--success' : ($commission->status === 'CANCELLED' ? 'crm-badge--danger' : 'crm-badge--warning') }}">{{ $commission->statusLabel() }}</span></td>
                             <td>
-                                <span class="block text-xs">Aprobada: {{ $commission->approved_at?->format('d/m/Y') ?? '-' }}</span>
-                                <span class="block text-xs">Pagada: {{ $commission->paid_at?->format('d/m/Y') ?? '-' }}</span>
+                                <span class="crm-comisiones-span-02">Aprobada: {{ $commission->approved_at?->format('d/m/Y') ?? '-' }}</span>
+                                <span class="crm-comisiones-span-02">Pagada: {{ $commission->paid_at?->format('d/m/Y') ?? '-' }}</span>
                             </td>
                             <td>
                                 <div class="crm-actions">

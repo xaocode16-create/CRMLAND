@@ -1,0 +1,8 @@
+
+@layer components {
+
+    .crm-comisiones-span-02 {
+        @apply block text-xs;
+    }
+
+}

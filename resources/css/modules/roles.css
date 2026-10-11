@@ -1,0 +1,132 @@
+@layer components {
+    .crm-roles-page { position: relative; display: grid; gap: 1rem; padding: 1rem; background: linear-gradient(145deg, #eff7fb 0%, #e8f1f7 100%); }
+    .crm-roles-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.2rem 1.45rem; border-color: #d2e1ed; box-shadow: 0 10px 24px rgb(25 75 112 / 7%); }
+    .crm-roles-scope { display: flex; align-items: center; gap: 0.35rem; margin-top: 0.35rem; color: #5e7893; font-size: 0.7rem; font-weight: 700; }
+    .crm-roles-scope i { color: #087df5; }
+    .crm-roles-header-actions { display: flex; flex-wrap: wrap; gap: 0.65rem; }
+    .crm-roles-primary-button, .crm-roles-secondary-button { display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem; min-height: 2.65rem; padding: 0.6rem 0.9rem; border: 1px solid #d2e0eb; border-radius: 0.55rem; background: #fff; color: #173b64; font-size: 0.75rem; font-weight: 800; text-decoration: none; cursor: pointer; transition: 160ms ease; }
+    .crm-roles-primary-button { border-color: #087df5; background: #087df5; color: #fff; box-shadow: 0 8px 18px rgb(8 125 245 / 20%); }
+    .crm-roles-primary-button:hover { background: #006fd8; }
+    .crm-roles-secondary-button:hover { border-color: #58acf0; color: #087df5; }
+    .crm-roles-metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; }
+    .crm-roles-metric { position: relative; display: grid; grid-template-columns: 2.55rem 1fr; grid-template-rows: auto auto auto; column-gap: 0.65rem; padding: 0.85rem; border-color: #d6e3ec; }
+    .crm-roles-metric > span { grid-row: span 3; display: grid; width: 2.55rem; height: 2.55rem; place-items: center; border-radius: 0.65rem; font-size: 1.15rem; }
+    .crm-roles-metric > strong { color: #0b315e; font-size: 1.65rem; line-height: 1; }
+    .crm-roles-metric > small { color: #536f8d; font-size: 0.75rem; font-weight: 800; }
+    .crm-roles-metric > em { color: #8497aa; font-size: 0.65rem; font-style: normal; }
+    .crm-roles-metric.is-blue > span { background: #e1f1ff; color: #087df5; }
+    .crm-roles-metric.is-green > span { background: #ddf7e9; color: #079657; }
+    .crm-roles-metric.is-amber > span { background: #fff0d3; color: #dc8500; }
+    .crm-roles-metric.is-purple > span { background: #eee4ff; color: #853cf1; }
+    .crm-roles-available, .crm-role-detail-card, .crm-role-permissions-card, .crm-roles-activity { padding: 1rem; border-color: #d3e1ed; }
+    .crm-roles-section-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+    .crm-roles-section-heading h2 { margin: 0.1rem 0 0; color: #0d3159; font-size: 1rem; font-weight: 800; }
+    .crm-roles-section-heading > span, .crm-roles-section-heading > a { color: #087df5; font-size: 0.7rem; font-weight: 800; text-decoration: none; }
+    .crm-roles-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; margin-top: 0.75rem; }
+    .crm-role-card { position: relative; min-width: 0; padding: 0.9rem; border: 1px solid #dce7ef; border-radius: 0.65rem; background: #fff; transition: 160ms ease; }
+    .crm-role-card:hover, .crm-role-card.is-selected { border-color: #55aafa; box-shadow: 0 9px 18px rgb(8 125 245 / 10%); }
+    .crm-role-card.is-selected { background: linear-gradient(145deg, #f0f9ff, #fff); }
+    .crm-role-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; }
+    .crm-role-card-icon { display: grid; width: 2.35rem; height: 2.35rem; place-items: center; border-radius: 0.55rem; font-size: 1.1rem; }
+    .crm-role-card-icon.is-admin { background: #e5f3ff; color: #087df5; }
+    .crm-role-card-icon.is-supervisor { background: #e5f7ff; color: #087aa8; }
+    .crm-role-card-icon.is-advisor { background: #e0f8ec; color: #07985d; }
+    .crm-role-card-icon.is-custom { background: #efe5ff; color: #853cf1; }
+    .crm-role-type { padding: 0.28rem 0.45rem; border-radius: 0.35rem; font-size: 0.6rem; font-weight: 800; }
+    .crm-role-type.is-admin, .crm-role-type.is-supervisor, .crm-role-type.is-advisor { background: #e3f2ff; color: #087df5; }
+    .crm-role-type.is-custom { background: #f0e6ff; color: #853cf1; }
+    .crm-role-card-select { display: block; width: 100%; margin-top: 0.65rem; padding: 0; border: 0; background: transparent; color: inherit; text-align: left; cursor: pointer; }
+    .crm-role-card-select h3 { margin: 0; color: #11375f; font-size: 0.95rem; font-weight: 850; }
+    .crm-role-card-select > div { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-top: 0.45rem; }
+    .crm-role-card-select > div span { display: inline-flex; align-items: center; gap: 0.25rem; color: #5f7892; font-size: 0.64rem; font-weight: 700; }
+    .crm-role-card-select > div i { color: #087df5; }
+    .crm-role-card-select p { min-height: 2.45rem; margin: 0.55rem 0 0; color: #73879d; font-size: 0.67rem; line-height: 1.35; }
+    .crm-role-select-button { display: inline-flex; margin-top: 0.5rem; padding: 0.38rem 0.65rem; border: 1px solid #d8e5ee; border-radius: 0.4rem; color: #294c72; font-size: 0.65rem; font-weight: 800; }
+    .crm-role-selected { display: inline-flex; align-items: center; gap: 0.3rem; margin-top: 0.5rem; color: #079657; font-size: 0.68rem; }
+    .crm-role-card-menu { position: absolute; right: 0.5rem; bottom: 0.55rem; display: grid; width: 1.7rem; height: 1.7rem; place-items: center; border: 0; background: transparent; color: #72869c; cursor: pointer; }
+    .crm-roles-detail-layout { display: grid; grid-template-columns: minmax(17rem, 0.65fr) minmax(0, 1.7fr); gap: 1rem; align-items: start; }
+    .crm-role-detail-heading, .crm-role-permissions-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+    .crm-role-detail-title { display: flex; align-items: center; gap: 0.65rem; margin-top: 0.5rem; }
+    .crm-role-detail-title h2 { margin: 0; color: #123861; font-size: 1.15rem; font-weight: 850; }
+    .crm-role-detail-title > div > span { color: #71859b; font-size: 0.68rem; }
+    .crm-roles-icon-button { border: 0; background: transparent; color: #71859b; cursor: pointer; }
+    .crm-role-detail-list { display: grid; gap: 0.65rem; margin: 1rem 0 0; }
+    .crm-role-detail-list > div { display: grid; grid-template-columns: 7.4rem 1fr; gap: 0.5rem; }
+    .crm-role-detail-list dt { color: #6b829b; font-size: 0.7rem; }
+    .crm-role-detail-list dd { display: flex; align-items: center; gap: 0.3rem; margin: 0; color: #23486f; font-size: 0.7rem; font-weight: 700; }
+    .crm-role-detail-list dd i.is-active { color: #0ba365; font-size: 0.45rem; }
+    .crm-role-detail-list dd i:not(.is-active) { color: #087df5; }
+    .crm-role-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.9rem; }
+    .crm-role-tags span { padding: 0.28rem 0.45rem; border-radius: 0.35rem; background: #edf5fb; color: #4f6e8e; font-size: 0.62rem; font-weight: 800; }
+    .crm-role-tags span.is-critical { background: #ffe0e5; color: #dc2c4b; }
+    .crm-role-users-heading { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-top: 1.1rem; padding-top: 0.8rem; border-top: 1px solid #e8eff4; color: #244a70; font-size: 0.73rem; }
+    .crm-role-users-heading a { color: #087df5; font-size: 0.65rem; font-weight: 800; text-decoration: none; }
+    .crm-role-users { display: grid; gap: 0.35rem; margin-top: 0.45rem; }
+    .crm-role-users > div { display: flex; align-items: center; gap: 0.45rem; min-width: 0; padding: 0.3rem 0; }
+    .crm-role-user-avatar { display: grid; width: 1.8rem; height: 1.8rem; flex: 0 0 auto; place-items: center; border-radius: 999px; background: #e3f1ff; color: #087df5; font-size: 0.62rem; font-weight: 850; }
+    .crm-role-users > div > span:nth-child(2) { display: grid; min-width: 0; gap: 0.08rem; flex: 1; }
+    .crm-role-users strong { overflow: hidden; color: #2a4c70; font-size: 0.68rem; text-overflow: ellipsis; white-space: nowrap; }
+    .crm-role-users small { overflow: hidden; color: #8395a8; font-size: 0.59rem; text-overflow: ellipsis; white-space: nowrap; }
+    .crm-role-users em { padding: 0.18rem 0.35rem; border-radius: 0.3rem; background: #e6f4ff; color: #087df5; font-size: 0.58rem; font-style: normal; font-weight: 800; }
+    .crm-role-actions { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 0.9rem; padding-top: 0.75rem; border-top: 1px solid #e8eff4; }
+    .crm-role-actions button { display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.45rem 0.55rem; border: 1px solid #d8e4ed; border-radius: 0.4rem; background: #fff; color: #294d73; font-size: 0.65rem; font-weight: 800; cursor: pointer; }
+    .crm-role-actions button:hover { border-color: #76baf0; color: #087df5; }
+    .crm-role-actions button.is-danger { flex-basis: 100%; border-color: #ffafb9; color: #dc2c4b; }
+    .crm-role-permissions-heading h2 { margin: 0; color: #123861; font-size: 1rem; font-weight: 850; }
+    .crm-role-permissions-heading p { margin: 0.2rem 0 0; color: #74899f; font-size: 0.68rem; }
+    .crm-role-permissions-heading label { display: inline-flex; align-items: center; gap: 0.35rem; color: #355678; font-size: 0.66rem; font-weight: 800; white-space: nowrap; }
+    .crm-role-permissions-heading input, .crm-permission-items input { accent-color: #087df5; }
+    .crm-role-permissions-search { position: relative; display: block; margin-top: 0.7rem; }
+    .crm-role-permissions-search i { position: absolute; top: 50%; left: 0.65rem; color: #7890a8; transform: translateY(-50%); }
+    .crm-role-permissions-search input { width: 100%; min-height: 2.25rem; padding: 0 0.65rem 0 1.95rem; border: 1px solid #d7e3ec; border-radius: 0.5rem; color: #24486e; font-size: 0.7rem; outline: 0; }
+    .crm-role-permissions-search input:focus { border-color: #56acf0; box-shadow: 0 0 0 3px rgb(8 125 245 / 10%); }
+    .crm-role-permissions-list { display: grid; gap: 0.55rem; max-height: 39rem; margin-top: 0.7rem; overflow: auto; padding-right: 0.25rem; }
+    .crm-permission-module { overflow: hidden; border: 1px solid #e0e9f0; border-radius: 0.55rem; }
+    .crm-permission-module-heading { display: flex; align-items: center; gap: 0.55rem; min-height: 2.55rem; padding: 0.4rem 0.55rem; background: #f4f8fb; }
+    .crm-permission-module-heading > div { display: grid; flex: 1; gap: 0.08rem; }
+    .crm-permission-module-heading strong { color: #24486e; font-size: 0.7rem; }
+    .crm-permission-module-heading small { color: #8395a8; font-size: 0.59rem; }
+    .crm-permission-module-heading > i { color: #7890a8; font-size: 0.65rem; }
+    .crm-permission-module-icon { display: grid; width: 1.65rem; height: 1.65rem; place-items: center; border-radius: 0.4rem; font-size: 0.75rem; }
+    .crm-permission-module-icon.is-blue { background: #e3f1ff; color: #087df5; }
+    .crm-permission-module-icon.is-cyan { background: #def8fb; color: #008ca3; }
+    .crm-permission-module-icon.is-green { background: #dff7ea; color: #079657; }
+    .crm-permission-module-icon.is-purple { background: #eee4ff; color: #853cf1; }
+    .crm-permission-module-icon.is-red { background: #ffe5e9; color: #dc2c4b; }
+    .crm-permission-module-icon.is-slate { background: #edf1f5; color: #64748b; }
+    .crm-permission-items { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .crm-permission-items label { display: grid; grid-template-columns: 1rem minmax(0, 1fr); align-items: center; gap: 0.35rem; min-height: 2.55rem; padding: 0.35rem 0.55rem; border-top: 1px solid #edf2f6; color: #365777; font-size: 0.65rem; }
+    .crm-permission-items label small { grid-column: 2; overflow: hidden; color: #9aaabb; font-size: 0.52rem; text-overflow: ellipsis; white-space: nowrap; }
+    .crm-permission-items label span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .crm-roles-save-button { display: inline-flex; align-items: center; gap: 0.35rem; margin-top: 0.75rem; padding: 0.55rem 0.8rem; border: 1px solid #087df5; border-radius: 0.45rem; background: #087df5; color: #fff; font-size: 0.7rem; font-weight: 800; cursor: pointer; }
+    .crm-roles-activity { overflow: hidden; }
+    .crm-roles-activity-table { overflow-x: auto; margin-top: 0.75rem; }
+    .crm-roles-activity-row { display: grid; grid-template-columns: 1.5fr 0.8fr 0.8fr 0.8fr 1fr 2rem; align-items: center; gap: 0.8rem; min-width: 42rem; min-height: 2.8rem; border-top: 1px solid #edf2f6; color: #607991; font-size: 0.67rem; }
+    .crm-roles-activity-row.is-heading { min-height: 2rem; border-top: 0; color: #8b9cad; font-size: 0.58rem; font-weight: 800; }
+    .crm-roles-activity-row span:first-child { display: grid; gap: 0.1rem; }
+    .crm-roles-activity-row strong { color: #24486e; font-size: 0.7rem; }
+    .crm-roles-activity-row small { color: #8b9cad; font-size: 0.58rem; }
+    .crm-roles-activity-row em { width: fit-content; padding: 0.25rem 0.4rem; border-radius: 999px; font-size: 0.58rem; font-style: normal; font-weight: 800; }
+    .crm-roles-activity-row em.is-active { background: #dff7ea; color: #078a52; }
+    .crm-roles-activity-row em.is-inactive { background: #ffe5e9; color: #dc2c4b; }
+    .crm-roles-activity-row button { border: 0; background: transparent; color: #71869c; cursor: pointer; }
+    .crm-roles-modal-layer { position: absolute; z-index: 40; inset: 0; display: grid; align-items: start; justify-items: center; padding: 1rem; }
+    .crm-roles-modal-backdrop { position: absolute; inset: 0; background: rgb(11 39 68 / 48%); backdrop-filter: blur(2px); }
+    .crm-roles-form-modal { position: relative; z-index: 1; width: min(100%, 42rem); max-height: calc(100vh - 2rem); overflow: auto; padding: 1.25rem; border-color: #c4dcea; box-shadow: 0 22px 60px rgb(6 40 75 / 24%); }
+    .crm-roles-form-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; padding-bottom: 0.9rem; border-bottom: 1px solid #e4edf3; }
+    .crm-roles-form-heading h2 { margin: 0.15rem 0 0; color: #113961; font-size: 1.4rem; font-weight: 850; }
+    .crm-roles-form-heading p:not(.crm-eyebrow) { margin: 0.2rem 0 0; color: #71869c; font-size: 0.75rem; }
+    .crm-roles-form-heading > button { border: 0; background: transparent; color: #607994; cursor: pointer; font-size: 1rem; }
+    .crm-roles-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem; margin-top: 1rem; }
+    .crm-roles-form-grid label { display: grid; gap: 0.3rem; color: #355575; font-size: 0.7rem; font-weight: 800; }
+    .crm-roles-form-grid label.span-two { grid-column: span 2; }
+    .crm-roles-form-grid input, .crm-roles-form-grid select, .crm-roles-form-grid textarea { width: 100%; padding: 0.65rem; border: 1px solid #d4e0e9; border-radius: 0.5rem; background: #fff; color: #1f4166; font-size: 0.76rem; outline: 0; }
+    .crm-roles-form-grid textarea { resize: vertical; }
+    .crm-roles-form-grid input:focus, .crm-roles-form-grid select:focus, .crm-roles-form-grid textarea:focus { border-color: #45a7f4; box-shadow: 0 0 0 3px rgb(8 125 245 / 10%); }
+    .crm-roles-form-grid em { color: #dc2c4b; font-style: normal; }
+    .crm-roles-form-grid small { color: #dc2c4b; font-size: 0.64rem; }
+    .crm-roles-form-actions { display: flex; justify-content: flex-end; gap: 0.6rem; margin-top: 1rem; padding-top: 0.85rem; border-top: 1px solid #e4edf3; }
+    @media (max-width: 1200px) { .crm-roles-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } .crm-permission-items { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 980px) { .crm-roles-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); } .crm-roles-detail-layout { grid-template-columns: 1fr; } }
+    @media (max-width: 680px) { .crm-roles-page { padding: 0.7rem; } .crm-roles-header { align-items: flex-start; flex-direction: column; } .crm-roles-header-actions { width: 100%; } .crm-roles-header-actions > * { flex: 1; } .crm-roles-metrics, .crm-roles-cards { grid-template-columns: 1fr; } .crm-permission-items { grid-template-columns: repeat(2, minmax(0, 1fr)); } .crm-roles-form-grid { grid-template-columns: 1fr; } .crm-roles-form-grid label.span-two { grid-column: auto; } }
+}

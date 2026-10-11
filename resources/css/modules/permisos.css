@@ -1,0 +1,1154 @@
+@layer components {
+    .crm-permissions-page {
+        display: grid;
+        gap: 1rem;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        overflow-x: clip;
+        padding: 1rem;
+        background: linear-gradient(145deg, #eff7fb 0%, #e8f1f7 100%);
+    }
+
+    .crm-permissions-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1.2rem 1.4rem;
+        border-color: #d2e1ed;
+        box-shadow: 0 10px 24px rgb(25 75 112 / 7%);
+    }
+
+    .crm-permissions-scope {
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+        margin-top: 0.4rem;
+        color: #5e7893;
+        font-size: 0.7rem;
+        font-weight: 700;
+    }
+
+    .crm-permissions-scope i {
+        color: #087df5;
+    }
+
+    .crm-permissions-header-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 0.55rem;
+    }
+
+    .crm-permissions-primary-button,
+    .crm-permissions-secondary-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
+        min-height: 2.55rem;
+        padding: 0.58rem 0.85rem;
+        border: 1px solid #d2e0eb;
+        border-radius: 0.55rem;
+        background: #fff;
+        color: #173b64;
+        font-size: 0.72rem;
+        font-weight: 800;
+        text-decoration: none;
+        cursor: pointer;
+        transition: 160ms ease;
+    }
+
+    .crm-permissions-primary-button {
+        border-color: #087df5;
+        background: #087df5;
+        color: #fff;
+        box-shadow: 0 8px 18px rgb(8 125 245 / 20%);
+    }
+
+    .crm-permissions-primary-button:hover {
+        background: #006fd8;
+    }
+
+    .crm-permissions-secondary-button:hover {
+        border-color: #58acf0;
+        color: #087df5;
+    }
+
+    .crm-permissions-compact-button {
+        min-height: 2.15rem;
+        padding: 0.42rem 0.65rem;
+        font-size: 0.65rem;
+    }
+
+    .crm-permissions-flash {
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.7rem 0.9rem;
+        border-radius: 0.55rem;
+        font-size: 0.75rem;
+        font-weight: 700;
+    }
+
+    .crm-permissions-flash.is-success {
+        background: #e2f8ed;
+        color: #087c4d;
+    }
+
+    .crm-permissions-flash.is-error {
+        background: #ffe6ea;
+        color: #c52645;
+    }
+
+    .crm-permissions-metrics {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0.75rem;
+    }
+
+    .crm-permissions-metric {
+        display: grid;
+        grid-template-columns: 2.6rem 1fr;
+        grid-template-rows: auto auto auto;
+        column-gap: 0.65rem;
+        padding: 0.85rem;
+        border-color: #d6e3ec;
+    }
+
+    .crm-permissions-metric > span {
+        display: grid;
+        grid-row: span 3;
+        width: 2.6rem;
+        height: 2.6rem;
+        place-items: center;
+        border-radius: 0.65rem;
+        font-size: 1.15rem;
+    }
+
+    .crm-permissions-metric > strong {
+        color: #0b315e;
+        font-size: 1.65rem;
+        line-height: 1;
+    }
+
+    .crm-permissions-metric > small {
+        margin-top: 0.15rem;
+        color: #536f8d;
+        font-size: 0.75rem;
+        font-weight: 800;
+    }
+
+    .crm-permissions-metric > em {
+        color: #8497aa;
+        font-size: 0.64rem;
+        font-style: normal;
+    }
+
+    .crm-permissions-metric.is-blue > span {
+        background: #e1f1ff;
+        color: #087df5;
+    }
+
+    .crm-permissions-metric.is-amber > span {
+        background: #fff0d3;
+        color: #dc8500;
+    }
+
+    .crm-permissions-metric.is-red > span {
+        background: #ffe5e9;
+        color: #dc2c4b;
+    }
+
+    .crm-permissions-metric.is-purple > span {
+        background: #eee4ff;
+        color: #853cf1;
+    }
+
+    .crm-permissions-toolbar {
+        display: grid;
+        grid-template-columns: minmax(260px, 1.8fr) repeat(4, minmax(130px, 1fr)) auto;
+        align-items: end;
+        gap: 0.65rem;
+        padding: 0.85rem;
+        border-color: #d3e1ed;
+    }
+
+    .crm-permissions-toolbar label {
+        display: grid;
+        min-width: 0;
+        gap: 0.3rem;
+    }
+
+    .crm-permissions-toolbar label > span {
+        color: #355575;
+        font-size: 0.64rem;
+        font-weight: 800;
+    }
+
+    .crm-permissions-toolbar input,
+    .crm-permissions-toolbar select {
+        width: 100%;
+        min-height: 2.25rem;
+        padding: 0 0.65rem;
+        border: 1px solid #d5e2eb;
+        border-radius: 0.45rem;
+        background: #fff;
+        color: #315574;
+        font-size: 0.68rem;
+        outline: 0;
+    }
+
+    .crm-permissions-toolbar input:focus,
+    .crm-permissions-toolbar select:focus {
+        border-color: #55aafa;
+        box-shadow: 0 0 0 3px rgb(8 125 245 / 10%);
+    }
+
+    .crm-permissions-search > div {
+        position: relative;
+    }
+
+    .crm-permissions-search i {
+        position: absolute;
+        top: 50%;
+        left: 0.65rem;
+        color: #7890a8;
+        transform: translateY(-50%);
+    }
+
+    .crm-permissions-search input {
+        padding-left: 1.9rem;
+    }
+
+    .crm-permissions-clear-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.3rem;
+        min-height: 2.25rem;
+        padding: 0 0.65rem;
+        border: 1px solid #d5e2eb;
+        border-radius: 0.45rem;
+        background: #fff;
+        color: #087df5;
+        font-size: 0.64rem;
+        font-weight: 800;
+        cursor: pointer;
+    }
+
+    .crm-permissions-workspace {
+        display: grid;
+        grid-template-columns: minmax(16rem, 0.7fr) minmax(0, 2.2fr);
+        gap: 1rem;
+        align-items: start;
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .crm-permissions-modules {
+        position: sticky;
+        top: 1rem;
+        padding: 0.9rem;
+        border-color: #d3e1ed;
+    }
+
+    .crm-permissions-panel-heading {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 0.8rem;
+    }
+
+    .crm-permissions-panel-heading h2 {
+        margin: 0.15rem 0 0;
+        color: #123861;
+        font-size: 1rem;
+        font-weight: 850;
+    }
+
+    .crm-permissions-panel-heading > div > small {
+        display: block;
+        margin-top: 0.25rem;
+        color: #7b8fa4;
+        font-size: 0.65rem;
+    }
+
+    .crm-permissions-panel-heading > span,
+    .crm-permissions-alert-count {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 1.7rem;
+        min-height: 1.35rem;
+        padding: 0.15rem 0.4rem;
+        border-radius: 999px;
+        background: #e7f2fc;
+        color: #087df5;
+        font-size: 0.62rem;
+        font-weight: 850;
+    }
+
+    .crm-permissions-module-item {
+        display: grid;
+        grid-template-columns: 1.85rem minmax(0, 1fr) 0.8rem;
+        align-items: center;
+        gap: 0.5rem;
+        width: 100%;
+        min-height: 2.8rem;
+        margin-top: 0.4rem;
+        padding: 0.42rem 0.45rem;
+        border: 1px solid transparent;
+        border-radius: 0.5rem;
+        background: transparent;
+        color: #607994;
+        text-align: left;
+        cursor: pointer;
+        transition: 160ms ease;
+    }
+
+    .crm-permissions-module-item:hover,
+    .crm-permissions-module-item.is-selected {
+        border-color: #84c5fa;
+        background: linear-gradient(90deg, #e8f5ff, #fff);
+        color: #087df5;
+    }
+
+    .crm-permissions-module-item > span:nth-child(2) {
+        display: grid;
+        min-width: 0;
+        gap: 0.12rem;
+    }
+
+    .crm-permissions-module-item strong {
+        overflow: hidden;
+        color: #284a70;
+        font-size: 0.68rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .crm-permissions-module-item small {
+        overflow: hidden;
+        color: #8b9cad;
+        font-size: 0.57rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .crm-permissions-module-item > i {
+        color: #9aabba;
+        font-size: 0.62rem;
+    }
+
+    .crm-permissions-module-icon {
+        display: grid;
+        width: 1.8rem;
+        height: 1.8rem;
+        place-items: center;
+        border-radius: 0.45rem;
+        font-size: 0.8rem;
+    }
+
+    .crm-permissions-module-icon.is-blue,
+    .crm-permissions-activity-icon.is-blue {
+        background: #e1f1ff;
+        color: #087df5;
+    }
+
+    .crm-permissions-module-icon.is-amber {
+        background: #fff0d3;
+        color: #dc8500;
+    }
+
+    .crm-permissions-module-icon.is-cyan {
+        background: #def8fb;
+        color: #008ca3;
+    }
+
+    .crm-permissions-module-icon.is-green {
+        background: #dff7ea;
+        color: #079657;
+    }
+
+    .crm-permissions-module-icon.is-purple {
+        background: #eee4ff;
+        color: #853cf1;
+    }
+
+    .crm-permissions-module-icon.is-red {
+        background: #ffe5e9;
+        color: #dc2c4b;
+    }
+
+    .crm-permissions-module-icon.is-slate {
+        background: #edf1f5;
+        color: #64748b;
+    }
+
+    .crm-permissions-main {
+        display: grid;
+        gap: 1rem;
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .crm-permissions-list-card,
+    .crm-permissions-detail-card,
+    .crm-permissions-governance-card,
+    .crm-permissions-activity-card,
+    .crm-permissions-alerts-card {
+        min-width: 0;
+        max-width: 100%;
+        padding: 1rem;
+        border-color: #d3e1ed;
+    }
+
+    .crm-permissions-table {
+        overflow-x: auto;
+        margin-top: 0.8rem;
+        border: 1px solid #e0e9f0;
+        border-radius: 0.55rem;
+    }
+
+    .crm-permissions-table-row {
+        display: grid;
+        grid-template-columns: 1.8rem minmax(13rem, 1.5fr) minmax(5.5rem, 0.7fr) minmax(12rem, 1.4fr) minmax(4.5rem, 0.55fr) minmax(7rem, 0.7fr);
+        align-items: center;
+        gap: 0.5rem;
+        min-width: 55rem;
+        min-height: 3.75rem;
+        padding: 0.4rem 0.55rem;
+        border-top: 1px solid #edf2f6;
+        background: #fff;
+        color: #365777;
+        font-size: 0.65rem;
+    }
+
+    .crm-permissions-table-row.is-heading {
+        min-height: 2.2rem;
+        border-top: 0;
+        background: #f3f7fa;
+        color: #8b9cad;
+        font-size: 0.57rem;
+        font-weight: 850;
+        text-transform: uppercase;
+    }
+
+    .crm-permissions-table-row.is-selected {
+        background: linear-gradient(90deg, #f0f9ff, #fff);
+        box-shadow: inset 3px 0 #087df5;
+    }
+
+    .crm-permissions-row-selector,
+    .crm-permissions-copy-button {
+        display: grid;
+        width: 1.55rem;
+        height: 1.55rem;
+        place-items: center;
+        border: 0;
+        background: transparent;
+        color: #9aaabb;
+        cursor: pointer;
+    }
+
+    .crm-permissions-table-row.is-selected .crm-permissions-row-selector {
+        color: #087df5;
+    }
+
+    .crm-permissions-name-cell {
+        display: grid;
+        min-width: 0;
+        gap: 0.12rem;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        text-align: left;
+        cursor: pointer;
+    }
+
+    .crm-permissions-name-cell strong {
+        overflow: hidden;
+        color: #1f4166;
+        font-size: 0.72rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .crm-permissions-name-cell small,
+    .crm-permissions-name-cell em {
+        overflow: hidden;
+        color: #8094a7;
+        font-size: 0.58rem;
+        font-style: normal;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .crm-permissions-type-badge,
+    .crm-permissions-status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.28rem;
+        width: fit-content;
+        padding: 0.27rem 0.42rem;
+        border-radius: 999px;
+        font-size: 0.59rem;
+        font-weight: 850;
+        white-space: nowrap;
+    }
+
+    .crm-permissions-type-badge.is-blue {
+        background: #e1f1ff;
+        color: #087df5;
+    }
+
+    .crm-permissions-type-badge.is-green {
+        background: #dff7ea;
+        color: #078b52;
+    }
+
+    .crm-permissions-type-badge.is-purple {
+        background: #eee4ff;
+        color: #7d3ae6;
+    }
+
+    .crm-permissions-type-badge.is-red {
+        background: #ffe5e9;
+        color: #d52c4b;
+    }
+
+    .crm-permissions-type-badge.is-amber {
+        background: #fff0d3;
+        color: #c47a00;
+    }
+
+    .crm-permissions-type-badge.is-slate {
+        background: #edf1f5;
+        color: #64748b;
+    }
+
+    .crm-permissions-role-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem;
+    }
+
+    .crm-permissions-role-chips span,
+    .crm-permissions-linked-roles span {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.2rem;
+        width: fit-content;
+        padding: 0.24rem 0.38rem;
+        border-radius: 0.3rem;
+        background: #e1f1ff;
+        color: #087df5;
+        font-size: 0.56rem;
+        font-weight: 800;
+    }
+
+    .crm-permissions-role-chips span.is-cyan,
+    .crm-permissions-linked-roles span.is-cyan {
+        background: #def8fb;
+        color: #008ca3;
+    }
+
+    .crm-permissions-role-chips span.is-green,
+    .crm-permissions-linked-roles span.is-green {
+        background: #dff7ea;
+        color: #078b52;
+    }
+
+    .crm-permissions-role-chips span.is-purple,
+    .crm-permissions-linked-roles span.is-purple {
+        background: #eee4ff;
+        color: #7d3ae6;
+    }
+
+    .crm-permissions-role-chips span.is-empty {
+        background: #f1f4f6;
+        color: #8b9cad;
+    }
+
+    .crm-permissions-role-chips > small {
+        align-self: center;
+        color: #087df5;
+        font-size: 0.58rem;
+        font-weight: 850;
+    }
+
+    .crm-permissions-status-badge {
+        background: #dff7ea;
+        color: #078b52;
+    }
+
+    .crm-permissions-status-badge i {
+        width: 0.36rem;
+        height: 0.36rem;
+        border-radius: 50%;
+        background: currentColor;
+    }
+
+    .crm-permissions-row-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.22rem;
+    }
+
+    .crm-permissions-row-actions button {
+        display: grid;
+        width: 1.7rem;
+        height: 1.7rem;
+        place-items: center;
+        border: 1px solid #e0e8ef;
+        border-radius: 0.35rem;
+        background: #fff;
+        color: #087df5;
+        cursor: pointer;
+    }
+
+    .crm-permissions-row-actions button:last-child {
+        color: #d52c4b;
+    }
+
+    .crm-permissions-list-footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.75rem;
+        padding-top: 0.7rem;
+        color: #8094a7;
+        font-size: 0.62rem;
+    }
+
+    .crm-permissions-list-footer i {
+        color: #087df5;
+    }
+
+    .crm-permissions-detail-grid,
+    .crm-permissions-bottom-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.8fr);
+        gap: 1rem;
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .crm-permissions-detail-list {
+        display: grid;
+        gap: 0.75rem;
+        margin: 1rem 0 0;
+    }
+
+    .crm-permissions-detail-list > div {
+        display: grid;
+        grid-template-columns: minmax(8.5rem, 0.65fr) minmax(0, 1.5fr);
+        gap: 0.8rem;
+        align-items: center;
+        padding-bottom: 0.7rem;
+        border-bottom: 1px solid #edf2f6;
+    }
+
+    .crm-permissions-detail-list dt {
+        color: #6d849c;
+        font-size: 0.68rem;
+        font-weight: 800;
+    }
+
+    .crm-permissions-detail-list dd {
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+        margin: 0;
+        color: #24486e;
+        font-size: 0.72rem;
+        font-weight: 750;
+    }
+
+    .crm-permissions-detail-list dd.is-description {
+        color: #6d849c;
+        font-weight: 500;
+        line-height: 1.45;
+    }
+
+    .crm-permissions-detail-list code {
+        padding: 0.28rem 0.4rem;
+        border-radius: 0.3rem;
+        background: #f0f5f8;
+        color: #51718f;
+        font-size: 0.65rem;
+    }
+
+    .crm-permissions-copy-button {
+        width: 1.45rem;
+        height: 1.45rem;
+        color: #087df5;
+    }
+
+    .crm-permissions-module-inline {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.3rem 0.45rem;
+        border-radius: 0.35rem;
+        background: #e1f1ff;
+        color: #087df5;
+    }
+
+    .crm-permissions-detail-list dd > small {
+        color: #8094a7;
+        font-size: 0.62rem;
+        font-weight: 500;
+    }
+
+    .crm-permissions-governance-card > .crm-permissions-panel-heading > i {
+        color: #087df5;
+        font-size: 1.3rem;
+    }
+
+    .crm-permissions-governance-status,
+    .crm-permissions-governance-critical,
+    .crm-permissions-linked-roles {
+        display: grid;
+        gap: 0.35rem;
+        margin-top: 0.8rem;
+        padding: 0.7rem;
+        border: 1px solid #e2ebf1;
+        border-radius: 0.5rem;
+        background: #fbfdff;
+    }
+
+    .crm-permissions-governance-status span {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        color: #078b52;
+        font-size: 0.7rem;
+        font-weight: 850;
+    }
+
+    .crm-permissions-governance-status small,
+    .crm-permissions-governance-critical strong,
+    .crm-permissions-linked-roles > strong {
+        color: #284a70;
+        font-size: 0.68rem;
+    }
+
+    .crm-permissions-governance-status small {
+        color: #8094a7;
+        font-size: 0.62rem;
+        font-weight: 500;
+    }
+
+    .crm-permissions-governance-critical {
+        background: #fff5f6;
+        border-color: #ffd8de;
+    }
+
+    .crm-permissions-governance-critical span {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        font-size: 0.65rem;
+        font-weight: 850;
+    }
+
+    .crm-permissions-governance-critical span.is-yes {
+        color: #d52c4b;
+    }
+
+    .crm-permissions-governance-critical span.is-no {
+        color: #078b52;
+    }
+
+    .crm-permissions-linked-roles > div {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+    }
+
+    .crm-permissions-linked-roles > div > small {
+        color: #8094a7;
+        font-size: 0.62rem;
+    }
+
+    .crm-permissions-linked-roles > a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        margin-top: 0.25rem;
+        padding: 0.45rem 0.55rem;
+        border: 1px solid #cfe5f6;
+        border-radius: 0.4rem;
+        color: #087df5;
+        font-size: 0.62rem;
+        font-weight: 800;
+        text-decoration: none;
+    }
+
+    .crm-permissions-empty-detail {
+        padding: 2rem;
+        color: #8094a7;
+        text-align: center;
+    }
+
+    .crm-permissions-empty-detail > i {
+        color: #087df5;
+        font-size: 1.8rem;
+    }
+
+    .crm-permissions-empty-detail h2 {
+        margin: 0.4rem 0 0;
+        color: #284a70;
+        font-size: 1rem;
+    }
+
+    .crm-permissions-empty-detail p {
+        margin-top: 0.3rem;
+        font-size: 0.7rem;
+    }
+
+    .crm-permissions-activity-card,
+    .crm-permissions-alerts-card {
+        min-height: 12rem;
+    }
+
+    .crm-permissions-activity-card > .crm-permissions-panel-heading > span {
+        background: #f0f5f8;
+        color: #6d849c;
+    }
+
+    .crm-permissions-activity-row {
+        display: grid;
+        grid-template-columns: 1.8rem minmax(0, 1fr) 1rem;
+        align-items: center;
+        gap: 0.5rem;
+        min-height: 2.7rem;
+        border-top: 1px solid #edf2f6;
+    }
+
+    .crm-permissions-activity-icon {
+        display: grid;
+        width: 1.65rem;
+        height: 1.65rem;
+        place-items: center;
+        border-radius: 0.45rem;
+        font-size: 0.75rem;
+    }
+
+    .crm-permissions-activity-row > span:nth-child(2) {
+        display: grid;
+        min-width: 0;
+        gap: 0.1rem;
+    }
+
+    .crm-permissions-activity-row strong {
+        overflow: hidden;
+        color: #315574;
+        font-size: 0.68rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .crm-permissions-activity-row small {
+        overflow: hidden;
+        color: #8b9cad;
+        font-size: 0.58rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .crm-permissions-activity-row > i {
+        color: #94a6b7;
+    }
+
+    .crm-permissions-alerts-card .crm-permissions-panel-heading {
+        margin-bottom: 0.45rem;
+    }
+
+    .crm-permissions-alert-row {
+        display: grid;
+        grid-template-columns: 1.7rem minmax(0, 1fr) 0.8rem;
+        align-items: center;
+        gap: 0.45rem;
+        min-height: 2.65rem;
+        padding: 0.35rem 0.45rem;
+        border-top: 1px solid #edf2f6;
+    }
+
+    .crm-permissions-alert-row > span {
+        display: grid;
+        gap: 0.08rem;
+    }
+
+    .crm-permissions-alert-row strong {
+        color: #315574;
+        font-size: 0.66rem;
+    }
+
+    .crm-permissions-alert-row small {
+        color: #8b9cad;
+        font-size: 0.57rem;
+    }
+
+    .crm-permissions-alert-row > i:first-child {
+        display: grid;
+        width: 1.55rem;
+        height: 1.55rem;
+        place-items: center;
+        border-radius: 0.4rem;
+    }
+
+    .crm-permissions-alert-row > i:last-child {
+        color: #94a6b7;
+        font-size: 0.65rem;
+    }
+
+    .crm-permissions-alert-row.is-red > i:first-child {
+        background: #ffe5e9;
+        color: #d52c4b;
+    }
+
+    .crm-permissions-alert-row.is-amber > i:first-child {
+        background: #fff0d3;
+        color: #c47a00;
+    }
+
+    .crm-permissions-alert-row.is-blue > i:first-child {
+        background: #e1f1ff;
+        color: #087df5;
+    }
+
+    .crm-permissions-modal-layer {
+        position: fixed;
+        z-index: 45;
+        top: calc(var(--crm-shell-header-height) + 2.2rem);
+        right: 0;
+        bottom: 0;
+        left: var(--crm-shell-brand-width);
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        overflow: auto;
+        padding: 1.25rem;
+    }
+
+    .crm-permissions-modal-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgb(11 39 68 / 48%);
+        backdrop-filter: blur(2px);
+    }
+
+    .crm-permissions-form-modal {
+        position: relative;
+        z-index: 1;
+        width: min(100%, 48rem);
+        max-width: calc(100% - 2rem);
+        max-height: calc(100% - 2rem);
+        overflow: auto;
+        padding: 1.25rem;
+        border-color: #c4dcea;
+        box-shadow: 0 22px 60px rgb(6 40 75 / 24%);
+    }
+
+    .crm-permissions-form-heading {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1rem;
+        padding-bottom: 0.9rem;
+        border-bottom: 1px solid #e4edf3;
+    }
+
+    .crm-permissions-form-heading h2 {
+        margin: 0.15rem 0 0;
+        color: #113961;
+        font-size: 1.4rem;
+        font-weight: 850;
+    }
+
+    .crm-permissions-form-heading p:not(.crm-eyebrow) {
+        margin: 0.2rem 0 0;
+        color: #71869c;
+        font-size: 0.75rem;
+    }
+
+    .crm-permissions-form-heading > button {
+        border: 0;
+        background: transparent;
+        color: #607994;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+
+    .crm-permissions-form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.8rem;
+        margin-top: 1rem;
+    }
+
+    .crm-permissions-form-grid label {
+        display: grid;
+        gap: 0.3rem;
+        color: #355575;
+        font-size: 0.7rem;
+        font-weight: 800;
+    }
+
+    .crm-permissions-form-grid input {
+        width: 100%;
+        padding: 0.65rem;
+        border: 1px solid #d4e0e9;
+        border-radius: 0.5rem;
+        background: #fff;
+        color: #1f4166;
+        font-size: 0.76rem;
+        outline: 0;
+    }
+
+    .crm-permissions-form-grid input:focus {
+        border-color: #45a7f4;
+        box-shadow: 0 0 0 3px rgb(8 125 245 / 10%);
+    }
+
+    .crm-permissions-form-grid em {
+        color: #dc2c4b;
+        font-style: normal;
+    }
+
+    .crm-permissions-form-grid small {
+        color: #dc2c4b;
+        font-size: 0.64rem;
+    }
+
+    .crm-permissions-form-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.6rem;
+        margin-top: 1rem;
+        padding-top: 0.85rem;
+        border-top: 1px solid #e4edf3;
+    }
+
+    @media (max-width: 1250px) {
+        .crm-permissions-toolbar {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .crm-permissions-search {
+            grid-column: span 2;
+        }
+
+        .crm-permissions-clear-button {
+            grid-column: 3;
+        }
+    }
+
+    @media (max-width: 1500px) and (min-width: 64rem) {
+        .crm-permissions-detail-grid,
+        .crm-permissions-bottom-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 1050px) {
+        .crm-permissions-metrics {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .crm-permissions-workspace {
+            grid-template-columns: 1fr;
+        }
+
+        .crm-permissions-modules {
+            position: static;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.35rem;
+        }
+
+        .crm-permissions-modules > .crm-permissions-panel-heading {
+            grid-column: 1 / -1;
+        }
+
+        .crm-permissions-module-item {
+            margin-top: 0;
+        }
+    }
+
+    @media (max-width: 780px) {
+        .crm-permissions-header {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        .crm-permissions-header-actions {
+            width: 100%;
+            justify-content: flex-start;
+        }
+
+        .crm-permissions-header-actions > * {
+            flex: 1 1 auto;
+        }
+
+        .crm-permissions-toolbar {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .crm-permissions-search,
+        .crm-permissions-clear-button {
+            grid-column: span 2;
+        }
+
+        .crm-permissions-detail-grid,
+        .crm-permissions-bottom-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .crm-permissions-modules {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @media (width < 64rem) {
+        .crm-permissions-modal-layer {
+            left: 0;
+        }
+    }
+
+    @media (max-width: 560px) {
+        .crm-permissions-page {
+            padding: 0.7rem;
+        }
+
+        .crm-permissions-metrics,
+        .crm-permissions-toolbar,
+        .crm-permissions-modules {
+            grid-template-columns: 1fr;
+        }
+
+        .crm-permissions-search,
+        .crm-permissions-clear-button,
+        .crm-permissions-modules > .crm-permissions-panel-heading {
+            grid-column: auto;
+        }
+
+        .crm-permissions-form-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .crm-permissions-detail-list > div {
+            grid-template-columns: 1fr;
+            gap: 0.3rem;
+        }
+
+        .crm-permissions-list-footer {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+    }
+}

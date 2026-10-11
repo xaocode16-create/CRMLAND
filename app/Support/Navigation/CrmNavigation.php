@@ -31,11 +31,11 @@ final class CrmNavigation
         ];
 
         if ($user->isAdministrador()) {
-            $groups['Administracion'] = $this->filterItems([
+            $groups['Administración'] = $this->filterItems([
                 $this->item($user, 'Usuarios', 'bi-person-gear', 'users.index', 'users.view'),
                 $this->item($user, 'Roles', 'bi-key', 'roles.index', 'roles.view'),
                 $this->item($user, 'Permisos', 'bi-shield-check', 'permissions.index', 'permissions.view'),
-                $this->item($user, 'Configuracion global', 'bi-gear', 'settings.index', 'settings.view'),
+                $this->item($user, 'Configuración global', 'bi-gear', 'settings.index', 'settings.view'),
             ]);
         } elseif ($user->isSupervisor()) {
             $groups['Gestion de equipo'] = $this->filterItems([

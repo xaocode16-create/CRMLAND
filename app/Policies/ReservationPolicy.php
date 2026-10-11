@@ -42,6 +42,16 @@ class ReservationPolicy
     }
 
     /**
+     * Determine whether the user can approve the reservation.
+     */
+    public function approve(User $user, Reservation $reservation): bool
+    {
+        return ($user->isAdministrador() || $user->isSupervisor())
+            && $user->hasPermission('appointments.edit')
+            && $user->canAccessAssigned($reservation->user_id);
+    }
+
+    /**
      * Determine whether the user can delete the model.
      */
     public function delete(User $user, Reservation $reservation): bool
