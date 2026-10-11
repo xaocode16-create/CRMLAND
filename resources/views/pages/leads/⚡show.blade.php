@@ -148,8 +148,8 @@ new #[Title('Detalle de lead')] class extends Component
     <header class="crm-page-header">
         <div>
             <p class="crm-eyebrow">Lead</p>
-            <h1 class="text-2xl font-bold text-[var(--color-crm-navy)]">{{ $this->record->full_name }}</h1>
-            <p class="text-sm text-[var(--color-crm-muted)]">{{ $this->record->phone }}{{ $this->record->email ? ' - '.$this->record->email : '' }}</p>
+            <h1 class="crm-module-title">{{ $this->record->full_name }}</h1>
+            <p class="crm-module-description">{{ $this->record->phone }}{{ $this->record->email ? ' - '.$this->record->email : '' }}</p>
         </div>
         <div class="crm-actions">
             <flux:button :href="route('leads.index')" icon="arrow-left" wire:navigate>Volver</flux:button>
@@ -158,29 +158,29 @@ new #[Title('Detalle de lead')] class extends Component
     </header>
 
     <div class="crm-grid crm-grid--stats">
-        <article class="crm-card crm-stat"><span>Origen</span><strong class="!text-xl">{{ $this->record->source?->name ?? '-' }}</strong></article>
-        <article class="crm-card crm-stat"><span>Etapa</span><strong class="!text-xl">{{ $this->record->pipelineStatus?->name ?? '-' }}</strong></article>
-        <article class="crm-card crm-stat"><span>Asesor</span><strong class="!text-xl">{{ $this->record->assignedUser?->name ?? 'Sin asignar' }}</strong></article>
-        <article class="crm-card crm-stat"><span>Presupuesto</span><strong class="!text-xl">{{ $this->record->budgetDisplay() }}</strong></article>
+        <article class="crm-card crm-stat"><span>Origen</span><strong class="crm-leads-strong-01">{{ $this->record->source?->name ?? '-' }}</strong></article>
+        <article class="crm-card crm-stat"><span>Etapa</span><strong class="crm-leads-strong-01">{{ $this->record->pipelineStatus?->name ?? '-' }}</strong></article>
+        <article class="crm-card crm-stat"><span>Asesor</span><strong class="crm-leads-strong-01">{{ $this->record->assignedUser?->name ?? 'Sin asignar' }}</strong></article>
+        <article class="crm-card crm-stat"><span>Presupuesto</span><strong class="crm-leads-strong-01">{{ $this->record->budgetDisplay() }}</strong></article>
     </div>
 
-    <div class="grid gap-4 xl:grid-cols-[1.2fr_0.8fr]">
-        <section class="crm-card crm-panel-pad space-y-4">
+    <div class="xl:grid-cols-[1.2fr_0.8fr] crm-grid">
+        <section class="crm-card crm-panel-pad crm-form-stack">
             <div>
                 <p class="crm-eyebrow">Datos</p>
-                <h2 class="text-lg font-bold text-[var(--color-crm-navy)]">Informacion comercial</h2>
+                <h2 class="crm-section-title">Informacion comercial</h2>
             </div>
-            <div class="crm-form-grid text-sm">
-                <div><span class="text-[var(--color-crm-muted)]">Distrito</span><strong class="block">{{ $this->record->district ?: '-' }}</strong></div>
-                <div><span class="text-[var(--color-crm-muted)]">Tipo buscado</span><strong class="block">{{ $this->record->property_type ?: '-' }}</strong></div>
-                <div><span class="text-[var(--color-crm-muted)]">Ingreso</span><strong class="block">{{ $this->record->entered_at?->format('d/m/Y H:i') }}</strong></div>
-                <div><span class="text-[var(--color-crm-muted)]">Proximo seguimiento</span><strong class="block">{{ $this->record->next_follow_up_at?->format('d/m/Y H:i') ?? '-' }}</strong></div>
+            <div class="crm-form-grid crm-leads-div-03">
+                <div><span class="crm-leads-span-02">Distrito</span><strong class="crm-leads-strong-02">{{ $this->record->district ?: '-' }}</strong></div>
+                <div><span class="crm-leads-span-02">Tipo buscado</span><strong class="crm-leads-strong-02">{{ $this->record->property_type ?: '-' }}</strong></div>
+                <div><span class="crm-leads-span-02">Ingreso</span><strong class="crm-leads-strong-02">{{ $this->record->entered_at?->format('d/m/Y H:i') }}</strong></div>
+                <div><span class="crm-leads-span-02">Proximo seguimiento</span><strong class="crm-leads-strong-02">{{ $this->record->next_follow_up_at?->format('d/m/Y H:i') ?? '-' }}</strong></div>
             </div>
-            <p class="rounded-lg bg-[var(--color-crm-bg-soft)] p-3 text-sm">{{ $this->record->notes ?: 'Sin notas generales.' }}</p>
+            <p class="crm-leads-p-02">{{ $this->record->notes ?: 'Sin notas generales.' }}</p>
 
-            <div class="border-t border-[var(--color-crm-border)] pt-4">
+            <div class="crm-leads-div-04">
                 <p class="crm-eyebrow">Propiedades</p>
-                <form wire:submit="attachProperty" class="mt-3 grid gap-3 md:grid-cols-[1fr_180px_auto]">
+                <form wire:submit="attachProperty" class="md:grid-cols-[1fr_180px_auto] crm-leads-form-02">
                     <flux:select wire:model="propertyId" label="Asociar propiedad">
                         <option value="">Seleccionar</option>
                         @foreach ($this->propertyOptions as $property)
@@ -194,13 +194,13 @@ new #[Title('Detalle de lead')] class extends Component
                         <option value="NEGOTIATING">Negociando</option>
                         <option value="REJECTED">Rechazada</option>
                     </flux:select>
-                    <div class="flex items-end"><flux:button type="submit" variant="primary">Asociar</flux:button></div>
+                    <div class="crm-leads-div-05"><flux:button type="submit" variant="primary">Asociar</flux:button></div>
                 </form>
-                <div class="mt-4 grid gap-3 md:grid-cols-2">
+                <div class="md:grid-cols-2 crm-leads-div-06">
                     @forelse ($this->record->properties as $property)
-                        <article class="rounded-lg border border-[var(--color-crm-border)] bg-white p-3">
-                            <a class="font-semibold text-[var(--color-crm-blue)]" href="{{ route('properties.show', $property) }}" wire:navigate>{{ $property->title }}</a>
-                            <p class="text-sm text-[var(--color-crm-muted)]">{{ $property->district }} - {{ $property->priceDisplay() }}</p>
+                        <article class="crm-inset-card">
+                            <a class="crm-link" href="{{ route('properties.show', $property) }}" wire:navigate>{{ $property->title }}</a>
+                            <p class="crm-module-description">{{ $property->district }} - {{ $property->priceDisplay() }}</p>
                             <span class="crm-badge crm-badge--info">{{ $property->pivot->relation_type }}</span>
                         </article>
                     @empty
@@ -210,18 +210,18 @@ new #[Title('Detalle de lead')] class extends Component
             </div>
         </section>
 
-        <aside class="space-y-4">
+        <aside class="crm-form-stack">
             <section class="crm-card crm-panel-pad">
                 <p class="crm-eyebrow">Notas</p>
-                <form wire:submit="addNote" class="mt-3 space-y-3">
+                <form wire:submit="addNote" class="crm-leads-form-03">
                     <flux:textarea wire:model="note" label="Nueva nota" />
                     <flux:button type="submit" variant="primary">Agregar nota</flux:button>
                 </form>
-                <div class="mt-4 space-y-3">
+                <div class="crm-leads-div-07">
                     @forelse ($this->record->notes->sortByDesc('created_at') as $noteItem)
-                        <article class="rounded-lg border border-[var(--color-crm-border)] bg-white p-3 text-sm">
+                        <article class="crm-leads-article-02">
                             <p>{{ $noteItem->content }}</p>
-                            <span class="text-xs text-[var(--color-crm-muted)]">{{ $noteItem->user?->name }} - {{ $noteItem->created_at?->format('d/m/Y H:i') }}</span>
+                            <span class="crm-muted-caption">{{ $noteItem->user?->name }} - {{ $noteItem->created_at?->format('d/m/Y H:i') }}</span>
                         </article>
                     @empty
                         <div class="crm-empty">Sin notas.</div>
@@ -231,8 +231,8 @@ new #[Title('Detalle de lead')] class extends Component
 
             <section class="crm-card crm-panel-pad">
                 <p class="crm-eyebrow">Seguimientos</p>
-                <form wire:submit="createFollowUp" class="mt-3 space-y-3">
-                    <div class="grid gap-3 md:grid-cols-2">
+                <form wire:submit="createFollowUp" class="crm-leads-form-03">
+                    <div class="md:grid-cols-2 crm-leads-div-08">
                         <flux:select wire:model="followUp.type" label="Tipo">
                             @foreach (App\Enums\FollowUpType::cases() as $case)
                                 <option value="{{ $case->value }}">{{ $case->label() }}</option>
@@ -248,16 +248,16 @@ new #[Title('Detalle de lead')] class extends Component
                     <flux:textarea wire:model="followUp.note" label="Nota" />
                     <flux:button type="submit" variant="primary">Programar</flux:button>
                 </form>
-                <div class="mt-4 space-y-3">
+                <div class="crm-leads-div-07">
                     @forelse ($this->record->followUps->sortBy('scheduled_at') as $item)
-                        <article class="rounded-lg border border-[var(--color-crm-border)] bg-white p-3 text-sm">
-                            <div class="flex items-start justify-between gap-3">
+                        <article class="crm-leads-article-02">
+                            <div class="crm-leads-div-09">
                                 <div><strong>{{ $item->type }}</strong><p>{{ $item->scheduled_at?->format('d/m/Y H:i') }}</p></div>
                                 <span class="crm-badge {{ $item->status === 'COMPLETED' ? 'crm-badge--success' : 'crm-badge--warning' }}">{{ $item->statusLabel() }}</span>
                             </div>
-                            @if ($item->note)<p class="mt-2 text-[var(--color-crm-muted)]">{{ $item->note }}</p>@endif
+                            @if ($item->note)<p class="crm-leads-p-03">{{ $item->note }}</p>@endif
                             @if ($item->status === 'PENDING')
-                                <flux:button size="sm" class="mt-2" wire:click="completeFollowUp({{ $item->id }})">Completar</flux:button>
+                                <flux:button size="sm" class="crm-leads-flux-button-01" wire:click="completeFollowUp({{ $item->id }})">Completar</flux:button>
                             @endif
                         </article>
                     @empty

@@ -220,10 +220,13 @@ class CrmCoreSeeder extends Seeder
     {
         foreach ([
             ['casa', 'Casa'],
+            ['casa-de-playa', 'Casa de Playa'],
             ['departamento', 'Departamento'],
+            ['duplex', 'Duplex'],
             ['terreno', 'Terreno'],
             ['oficina', 'Oficina'],
             ['local-comercial', 'Local comercial'],
+            ['otro', 'Otro'],
             ['proyecto-inmobiliario', 'Proyecto inmobiliario'],
         ] as [$slug, $name]) {
             PropertyType::query()->updateOrCreate(

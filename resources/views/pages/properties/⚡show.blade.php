@@ -221,8 +221,8 @@ new #[Title('Detalle de propiedad')] class extends Component
     <header class="crm-page-header">
         <div>
             <p class="crm-eyebrow">{{ $this->record->code }}</p>
-            <h1 class="text-2xl font-bold text-[var(--color-crm-navy)]">{{ $this->record->title }}</h1>
-            <p class="text-sm text-[var(--color-crm-muted)]">{{ $this->record->district }} - {{ $this->record->operationLabel() }}</p>
+            <h1 class="crm-module-title">{{ $this->record->title }}</h1>
+            <p class="crm-module-description">{{ $this->record->district }} - {{ $this->record->operationLabel() }}</p>
         </div>
         <div class="crm-actions">
             <flux:button :href="route('properties.index')" icon="arrow-left" wire:navigate>Volver</flux:button>
@@ -231,25 +231,28 @@ new #[Title('Detalle de propiedad')] class extends Component
     </header>
 
     <div class="crm-grid crm-grid--stats">
-        <article class="crm-card crm-stat"><span>Precio</span><strong class="!text-xl">{{ $this->record->priceDisplay() }}</strong></article>
-        <article class="crm-card crm-stat"><span>Estado</span><strong class="!text-xl">{{ $this->record->statusLabel() }}</strong></article>
-        <article class="crm-card crm-stat"><span>Area</span><strong class="!text-xl">{{ $this->record->area_m2 }} m2</strong></article>
-        <article class="crm-card crm-stat"><span>Asesor</span><strong class="!text-xl">{{ $this->record->assignedUser?->name ?? 'Sin asignar' }}</strong></article>
+        <article class="crm-card crm-stat"><span>Precio</span><strong class="crm-propiedades-strong-02">{{ $this->record->priceDisplay() }}</strong></article>
+        <article class="crm-card crm-stat"><span>Estado</span><strong class="crm-propiedades-strong-02">{{ $this->record->statusLabel() }}</strong></article>
+        <article class="crm-card crm-stat"><span>Area</span><strong class="crm-propiedades-strong-02">{{ $this->record->area_m2 }} m2</strong></article>
+        <article class="crm-card crm-stat"><span>Asesor</span><strong class="crm-propiedades-strong-02">{{ $this->record->assignedUser?->name ?? 'Sin asignar' }}</strong></article>
     </div>
 
-    <div class="grid gap-4 xl:grid-cols-[1.15fr_0.85fr]">
-        <section class="crm-card crm-panel-pad space-y-4">
+    <div class="xl:grid-cols-[1.15fr_0.85fr] crm-grid">
+        <section class="crm-card crm-panel-pad crm-form-stack">
             <div>
                 <p class="crm-eyebrow">Galeria</p>
-                <h2 class="text-lg font-bold text-[var(--color-crm-navy)]">Imagenes de la propiedad</h2>
+                <h2 class="crm-section-title">Imagenes de la propiedad</h2>
             </div>
 
-            <div class="grid gap-3 md:grid-cols-2">
+            <div class="md:grid-cols-2 crm-propiedades-div-09">
                 @forelse ($this->record->images as $image)
-                    <article class="overflow-hidden rounded-lg border border-[var(--color-crm-border)] bg-white" wire:key="image-{{ $image->id }}">
-                        <img class="h-56 w-full object-cover" src="{{ Storage::url($image->storage_key) }}" alt="{{ $image->file_name }}">
-                        <div class="flex flex-wrap items-center justify-between gap-2 p-3">
-                            <span class="crm-badge {{ $image->is_primary ? 'crm-badge--success' : '' }}">{{ $image->is_primary ? 'Principal' : 'Galeria' }}</span>
+                    <article class="crm-propiedades-article-01" wire:key="image-{{ $image->id }}">
+                        <img class="crm-propiedades-img-03" src="{{ Storage::url($image->storage_key) }}" alt="{{ $image->file_name }}">
+                        <div class="crm-propiedades-div-10">
+                            <div>
+                                <span class="crm-badge {{ $image->is_primary ? 'crm-badge--success' : '' }}">{{ $image->is_primary ? 'Principal' : 'Galeria' }}</span>
+                                <span class="crm-propiedades-image-meta">{{ $image->width && $image->height ? $image->width.' x '.$image->height.' px' : 'Dimensiones no disponibles' }}</span>
+                            </div>
                             <div class="crm-actions">
                                 @if (! $image->is_primary)
                                     <flux:button size="sm" wire:click="setPrimary({{ $image->id }})">Principal</flux:button>
@@ -263,34 +266,34 @@ new #[Title('Detalle de propiedad')] class extends Component
                 @endforelse
             </div>
 
-            <form wire:submit="uploadImages" class="rounded-lg border border-dashed border-[var(--color-crm-border)] p-4">
+            <form wire:submit="uploadImages" class="crm-propiedades-form-02">
                 <flux:input wire:model="photos" type="file" label="Subir imagenes" multiple />
-                <div class="crm-form-actions mt-3">
+                <div class="crm-form-actions crm-propiedades-div-11">
                     <flux:button type="submit" variant="primary" icon="arrow-up-tray">Subir</flux:button>
                 </div>
             </form>
         </section>
 
-        <aside class="space-y-4">
-            <section class="crm-card crm-panel-pad space-y-4">
+        <aside class="crm-form-stack">
+            <section class="crm-card crm-panel-pad crm-form-stack">
                 <div>
                     <p class="crm-eyebrow">Datos</p>
-                    <h2 class="text-lg font-bold text-[var(--color-crm-navy)]">Informacion comercial</h2>
+                    <h2 class="crm-section-title">Informacion comercial</h2>
                 </div>
-                <div class="crm-form-grid text-sm">
-                    <div><span class="text-[var(--color-crm-muted)]">Tipo</span><strong class="block">{{ $this->record->type?->name }}</strong></div>
-                    <div><span class="text-[var(--color-crm-muted)]">Direccion</span><strong class="block">{{ $this->record->address }}</strong></div>
-                    <div><span class="text-[var(--color-crm-muted)]">Dormitorios</span><strong class="block">{{ $this->record->bedrooms ?? '-' }}</strong></div>
-                    <div><span class="text-[var(--color-crm-muted)]">Banos</span><strong class="block">{{ $this->record->bathrooms ?? '-' }}</strong></div>
-                    <div><span class="text-[var(--color-crm-muted)]">Cocheras</span><strong class="block">{{ $this->record->parking_spaces ?? '-' }}</strong></div>
-                    <div><span class="text-[var(--color-crm-muted)]">Propietario</span><strong class="block">{{ $this->record->owner_name ?: '-' }}</strong></div>
+                <div class="crm-form-grid crm-propiedades-div-12">
+                    <div><span class="crm-propiedades-span-01">Tipo</span><strong class="crm-propiedades-strong-03">{{ $this->record->type?->name }}</strong></div>
+                    <div><span class="crm-propiedades-span-01">Direccion</span><strong class="crm-propiedades-strong-03">{{ $this->record->address }}</strong></div>
+                    <div><span class="crm-propiedades-span-01">Dormitorios</span><strong class="crm-propiedades-strong-03">{{ $this->record->bedrooms ?? '-' }}</strong></div>
+                    <div><span class="crm-propiedades-span-01">Banos</span><strong class="crm-propiedades-strong-03">{{ $this->record->bathrooms ?? '-' }}</strong></div>
+                    <div><span class="crm-propiedades-span-01">Cocheras</span><strong class="crm-propiedades-strong-03">{{ $this->record->parking_spaces ?? '-' }}</strong></div>
+                    <div><span class="crm-propiedades-span-01">Propietario</span><strong class="crm-propiedades-strong-03">{{ $this->record->owner_name ?: '-' }}</strong></div>
                 </div>
-                <p class="rounded-lg bg-[var(--color-crm-bg-soft)] p-3 text-sm">{{ $this->record->description ?: 'Sin descripcion registrada.' }}</p>
+                <p class="crm-propiedades-p-02">{{ $this->record->description ?: 'Sin descripcion registrada.' }}</p>
             </section>
 
             <section class="crm-card crm-panel-pad">
                 <p class="crm-eyebrow">Leads asociados</p>
-                <form wire:submit="attachLead" class="mt-3 grid gap-3 md:grid-cols-[1fr_170px_auto]">
+                <form wire:submit="attachLead" class="md:grid-cols-[1fr_170px_auto] crm-propiedades-form-03">
                     <flux:select wire:model="leadId" label="Lead">
                         <option value="">Seleccionar</option>
                         @foreach ($this->leadOptions as $lead)
@@ -304,13 +307,13 @@ new #[Title('Detalle de propiedad')] class extends Component
                         <option value="NEGOTIATING">Negociando</option>
                         <option value="REJECTED">Rechazada</option>
                     </flux:select>
-                    <div class="flex items-end"><flux:button type="submit" variant="primary">Asociar</flux:button></div>
+                    <div class="crm-propiedades-div-13"><flux:button type="submit" variant="primary">Asociar</flux:button></div>
                 </form>
-                <div class="mt-4 space-y-3">
+                <div class="crm-propiedades-div-14">
                     @forelse ($this->record->leads as $lead)
-                        <article class="rounded-lg border border-[var(--color-crm-border)] bg-white p-3" wire:key="property-lead-{{ $lead->id }}">
-                            <a class="font-semibold text-[var(--color-crm-blue)]" href="{{ route('leads.show', $lead) }}" wire:navigate>{{ $lead->full_name }}</a>
-                            <p class="text-sm text-[var(--color-crm-muted)]">{{ $lead->phone }} - {{ $lead->assignedUser?->name ?? 'Sin asesor' }}</p>
+                        <article class="crm-inset-card" wire:key="property-lead-{{ $lead->id }}">
+                            <a class="crm-link" href="{{ route('leads.show', $lead) }}" wire:navigate>{{ $lead->full_name }}</a>
+                            <p class="crm-module-description">{{ $lead->phone }} - {{ $lead->assignedUser?->name ?? 'Sin asesor' }}</p>
                             <span class="crm-badge crm-badge--info">{{ $lead->pivot->relation_type }}</span>
                         </article>
                     @empty
@@ -322,16 +325,16 @@ new #[Title('Detalle de propiedad')] class extends Component
     </div>
 
     <section class="crm-card crm-panel-pad">
-        <div class="mb-4 flex flex-wrap items-center justify-between gap-3">
+        <div class="crm-propiedades-div-15">
             <div>
                 <p class="crm-eyebrow">Proyecto</p>
-                <h2 class="text-lg font-bold text-[var(--color-crm-navy)]">Unidades</h2>
+                <h2 class="crm-section-title">Unidades</h2>
             </div>
             <flux:button icon="plus" wire:click="toggleUnitForm">Nueva unidad</flux:button>
         </div>
 
         @if ($showUnitForm)
-            <form wire:submit="addUnit" class="mb-4 space-y-4 rounded-lg border border-[var(--color-crm-border)] p-4">
+            <form wire:submit="addUnit" class="crm-propiedades-form-04">
                 <div class="crm-form-grid">
                     <flux:input wire:model="unitForm.unit_number" label="Numero" required />
                     <flux:input wire:model="unitForm.unit_type" label="Tipo" />
@@ -362,7 +365,7 @@ new #[Title('Detalle de propiedad')] class extends Component
                 <tbody>
                     @forelse ($this->record->units as $unit)
                         <tr wire:key="unit-{{ $unit->id }}">
-                            <td>{{ $unit->unit_number }}<br><span class="text-xs text-[var(--color-crm-muted)]">{{ $unit->tower ?: '-' }} {{ $unit->floor ?: '' }}</span></td>
+                            <td>{{ $unit->unit_number }}<br><span class="crm-muted-caption">{{ $unit->tower ?: '-' }} {{ $unit->floor ?: '' }}</span></td>
                             <td>{{ $unit->area_m2 ?? '-' }} m2</td>
                             <td>{{ $unit->bedrooms ?? 0 }} dorm. / {{ $unit->bathrooms ?? 0 }} banos</td>
                             <td>{{ strtoupper($unit->currency) === 'USD' ? 'US$' : 'S/' }} {{ number_format((float) $unit->price, 2) }}</td>

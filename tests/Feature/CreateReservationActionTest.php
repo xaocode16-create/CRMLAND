@@ -29,6 +29,7 @@ it('creates an active reservation and reserves the property', function () {
     ], $advisor);
 
     expect($reservation->status)->toBe(ReservationStatus::Active->value);
+    expect($reservation->approval_status)->toBe('PENDING');
     expect($reservation->user_id)->toBe($advisor->id);
     expect($property->fresh()->status)->toBe(PropertyStatus::Reserved->value);
     $this->assertDatabaseHas('reservations', [

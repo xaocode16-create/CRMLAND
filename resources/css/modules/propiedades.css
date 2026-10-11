@@ -1,0 +1,148 @@
+
+@layer components {
+
+    .crm-propiedades-section-01 {
+        @apply overflow-hidden;
+    }
+
+    .crm-propiedades-div-01 {
+        @apply grid gap-4 p-4;
+    }
+
+    .crm-propiedades-h2-01 {
+        @apply text-xl font-bold text-[var(--color-crm-navy)];
+    }
+
+    .crm-propiedades-img-01 {
+        @apply h-32 w-full rounded-lg object-cover;
+    }
+
+    .crm-propiedades-div-03 {
+        @apply h-40 bg-[var(--color-crm-bg-soft)];
+    }
+
+    .crm-propiedades-img-02 {
+        @apply h-full w-full object-cover;
+    }
+
+    .crm-propiedades-div-04 {
+        @apply flex h-full items-center justify-center text-[var(--color-crm-muted)];
+    }
+
+    .crm-propiedades-div-05 {
+        @apply space-y-3 p-4;
+    }
+
+    .crm-propiedades-div-06 {
+        @apply flex items-start justify-between gap-3;
+    }
+
+    .crm-propiedades-a-01 {
+        @apply font-bold text-[var(--color-crm-blue)];
+    }
+
+    .crm-propiedades-div-07 {
+        @apply flex flex-wrap gap-2 text-sm text-[var(--color-crm-muted)];
+    }
+
+    .crm-propiedades-strong-01 {
+        @apply block text-xl text-[var(--color-crm-navy)];
+    }
+
+    .crm-propiedades-strong-02 {
+        @apply !text-xl;
+    }
+
+    .crm-propiedades-div-09 {
+        @apply grid gap-3;
+    }
+
+    .crm-propiedades-article-01 {
+        @apply overflow-hidden rounded-lg border border-[var(--color-crm-border)] bg-white;
+    }
+
+    .crm-propiedades-img-03 {
+        @apply h-56 w-full object-cover;
+    }
+
+    .crm-propiedades-div-10 {
+        @apply flex flex-wrap items-center justify-between gap-2 p-3;
+    }
+
+    .crm-propiedades-form-02 {
+        @apply rounded-lg border border-dashed border-[var(--color-crm-border)] p-4;
+    }
+
+    .crm-propiedades-div-11 {
+        @apply mt-3;
+    }
+
+    .crm-propiedades-div-12 {
+        @apply text-sm;
+    }
+
+    .crm-propiedades-span-01 {
+        @apply text-[var(--color-crm-muted)];
+    }
+
+    .crm-propiedades-strong-03 {
+        @apply block;
+    }
+
+    .crm-propiedades-p-02 {
+        @apply rounded-lg bg-[var(--color-crm-bg-soft)] p-3 text-sm;
+    }
+
+    .crm-propiedades-form-03 {
+        @apply mt-3 grid gap-3;
+    }
+
+    .crm-propiedades-div-13 {
+        @apply flex items-end;
+    }
+
+    .crm-propiedades-div-14 {
+        @apply mt-4 space-y-3;
+    }
+
+    .crm-propiedades-div-15 {
+        @apply mb-4 flex flex-wrap items-center justify-between gap-3;
+    }
+
+    .crm-propiedades-form-04 {
+        @apply mb-4 space-y-4 rounded-lg border border-[var(--color-crm-border)] p-4;
+    }
+
+    .crm-propiedades-form-section {
+        @apply space-y-4 rounded-lg border border-[var(--color-crm-border)] bg-white p-4;
+    }
+
+    .crm-propiedades-form-section-title {
+        @apply text-base font-semibold text-[var(--color-crm-navy)];
+    }
+
+    .crm-propiedades-upload-help {
+        @apply text-sm text-[var(--color-crm-muted)];
+    }
+
+    .crm-propiedades-image-preview-grid {
+        @apply grid gap-3 sm:grid-cols-2 lg:grid-cols-4;
+    }
+
+    .crm-propiedades-image-preview {
+        @apply overflow-hidden rounded-lg border border-[var(--color-crm-border)] bg-[var(--color-crm-bg-soft)];
+    }
+
+    .crm-propiedades-image-preview img {
+        @apply h-28 w-full object-cover;
+    }
+
+    .crm-propiedades-image-preview span {
+        @apply block truncate p-2 text-xs text-[var(--color-crm-muted)];
+    }
+
+    .crm-propiedades-image-meta {
+        @apply ml-2 text-xs text-[var(--color-crm-muted)];
+    }
+
+}

@@ -1,5 +1,5 @@
-<div class="flex items-start max-md:flex-col">
-    <div class="me-10 w-full pb-4 md:w-[220px]">
+<div class="max-md:flex-col crm-configuracion-div-01">
+    <div class="md:w-[220px] crm-configuracion-div-02">
         <flux:navlist aria-label="Configuracion">
             <flux:navlist.item :href="route('profile.edit')" wire:navigate>Perfil</flux:navlist.item>
             <flux:navlist.item :href="route('security.edit')" wire:navigate>Seguridad</flux:navlist.item>
@@ -9,11 +9,11 @@
 
     <flux:separator class="md:hidden" />
 
-    <div class="flex-1 self-stretch max-md:pt-6">
+    <div class="max-md:pt-6 crm-configuracion-div-03">
         <flux:heading>{{ $heading ?? '' }}</flux:heading>
         <flux:subheading>{{ $subheading ?? '' }}</flux:subheading>
 
-        <div class="mt-5 w-full max-w-lg">
+        <div class="crm-configuracion-div-04">
             {{ $slot }}
         </div>
     </div>

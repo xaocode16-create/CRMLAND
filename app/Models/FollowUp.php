@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\FollowUpPriority;
 use App\Enums\FollowUpStatus;
+use App\Enums\FollowUpType;
 use Database\Factories\FollowUpFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Builder;
@@ -104,5 +105,10 @@ class FollowUp extends Model
     public function priorityLabel(): string
     {
         return FollowUpPriority::tryFrom($this->priority)?->label() ?? $this->priority;
+    }
+
+    public function typeLabel(): string
+    {
+        return FollowUpType::tryFrom($this->type)?->label() ?? $this->type;
     }
 }

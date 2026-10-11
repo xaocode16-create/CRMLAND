@@ -25,8 +25,8 @@ new class extends Component {
     }
 }; ?>
 
-<flux:modal name="confirm-user-deletion" :show="$errors->isNotEmpty()" focusable class="max-w-lg">
-    <form method="POST" wire:submit="deleteUser" class="space-y-6">
+<flux:modal name="confirm-user-deletion" :show="$errors->isNotEmpty()" focusable class="crm-configuracion-elemento-01">
+    <form method="POST" wire:submit="deleteUser" class="crm-configuracion-form-01">
         <div>
             <flux:heading size="lg">¿Estas seguro de que deseas eliminar tu cuenta?</flux:heading>
 
@@ -37,7 +37,7 @@ new class extends Component {
 
         <flux:input wire:model="password" label="Contrasena" type="password" viewable />
 
-        <div class="flex justify-end space-x-2 rtl:space-x-reverse">
+        <div class="rtl:space-x-reverse crm-configuracion-div-16">
             <flux:modal.close>
                 <flux:button variant="filled">Cancelar</flux:button>
             </flux:modal.close>

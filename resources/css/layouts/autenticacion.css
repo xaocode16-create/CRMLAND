@@ -1,0 +1,486 @@
+@layer components {
+
+    .crm-brand-mark {
+        background: white;
+        border-radius: 999px;
+        box-shadow: 0 10px 24px rgb(0 140 255 / 18%);
+    }
+
+    .crm-auth-layout {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1.4fr) minmax(22rem, 0.9fr);
+        gap: clamp(1rem, 3vw, 2.75rem);
+        min-height: 100svh;
+        padding: clamp(2rem, 4.7vw, 3.4rem) clamp(1.5rem, 5.65vw, 4rem) clamp(2rem, 4vw, 3rem) clamp(1.5rem, 6.25vw, 4.5rem);
+    }
+
+    .crm-auth-aside {
+        min-height: 0;
+    }
+
+    .crm-auth-main {
+        min-height: 0;
+    }
+
+    @media (min-width: 1024px) {
+        .crm-auth-main {
+            justify-content: flex-end !important;
+            align-items: flex-start !important;
+            padding: clamp(8.25rem, 18.75vh, 9rem) 0 0 !important;
+        }
+    }
+
+    .crm-auth-body {
+        min-height: 100svh;
+        background:
+            linear-gradient(90deg, rgb(1 24 53 / 12%) 0%, rgb(2 35 71 / 2%) 48%, rgb(5 55 108 / 10%) 100%),
+            linear-gradient(0deg, rgb(1 27 60 / 30%), transparent 65%),
+            url('/assets/img/casa.png') center / cover no-repeat,
+            var(--color-crm-navy);
+        color: white;
+    }
+
+    .crm-auth-card {
+        width: min(100%, 29rem);
+        padding-top: 0;
+    }
+
+    .crm-auth-card:has(.crm-login-stack) {
+        width: min(100%, 21.625rem);
+    }
+
+    .crm-login-stack {
+        gap: 0.7rem !important;
+    }
+
+    .crm-login-stack form {
+        gap: 0.875rem !important;
+    }
+
+    .crm-auth-brand-name span {
+        color: #0ba9f5;
+    }
+
+    .crm-auth-hero-copy h1 {
+        max-width: 19rem;
+        margin-top: 0.7rem;
+        font-size: clamp(2.5rem, 3.3vw, 3rem);
+        line-height: 1.04;
+        letter-spacing: -0.025em;
+    }
+
+    .crm-auth-hero-copy {
+        margin-top: clamp(4.75rem, 11.3vh, 7rem);
+    }
+
+    .crm-auth-hero-copy > p:last-child {
+        max-width: 22rem;
+        margin-top: 1rem;
+        font-size: 1rem;
+        line-height: 1.45;
+    }
+
+    .crm-auth-hero-copy .crm-eyebrow {
+        color: #dce9fa;
+        font-size: 0.82rem;
+        letter-spacing: 0.2em;
+    }
+
+    .crm-login-stack [data-flux-heading] {
+        margin-bottom: 0 !important;
+        font-size: 2.5rem !important;
+        line-height: 1.05 !important;
+    }
+
+    .crm-login-stack [data-flux-subheading] {
+        margin-top: 0.25rem !important;
+        font-size: 1rem !important;
+        line-height: 1.4 !important;
+    }
+
+    .crm-login-options {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        margin-top: -0.25rem;
+    }
+
+    .crm-login-options a {
+        color: #08b5ff !important;
+        font-size: 0.88rem;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+    .crm-login-options a:hover {
+        color: #ffffff !important;
+    }
+
+    .crm-password-field {
+        display: grid;
+        gap: 0.45rem;
+    }
+
+    .crm-field-label-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        color: #f4f8ff;
+        font-size: 0.95rem;
+        font-weight: 600;
+    }
+
+    .crm-field-label-row a {
+        color: #13bdff !important;
+        font-size: 0.9rem;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+    .crm-field-label-row a:hover {
+        color: #ffffff !important;
+    }
+
+    .crm-auth-card::before {
+        content: "";
+        display: block;
+        width: 7rem;
+        height: 2px;
+        margin-bottom: 1.7rem;
+        background: linear-gradient(90deg, #20c4ff, rgb(32 196 255 / 8%));
+    }
+
+    .crm-auth-aside {
+        padding-block: 0;
+        justify-content: flex-start;
+    }
+
+    .crm-auth-aside-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 2rem;
+    }
+
+    .crm-auth-nav {
+        position: absolute;
+        top: clamp(1.25rem, 3.3vw, 2.4rem);
+        right: clamp(1rem, 2.1vw, 1.5rem);
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        padding-top: 0;
+        color: #315b84;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        white-space: nowrap;
+    }
+
+    .crm-auth-nav i,
+    .crm-auth-footer i {
+        display: block;
+        width: 0.25rem;
+        height: 0.25rem;
+        border-radius: 999px;
+        background: #20c4ff;
+    }
+
+    .crm-auth-nav i {
+        width: 1px;
+        height: 0.7rem;
+        border-radius: 0;
+        background: rgb(29 69 109 / 65%);
+    }
+
+    .crm-auth-nav b {
+        display: block;
+        width: 2.5rem;
+        height: 2px;
+        margin-left: 0.1rem;
+        background: #08aef4;
+    }
+
+    .crm-auth-hero-copy h1 span {
+        color: #19bfff;
+    }
+
+    .crm-auth-features > div {
+        box-sizing: border-box;
+        height: 7rem;
+        min-height: 0;
+        padding: 0.5rem 0.45rem;
+        border: 1px solid rgb(147 206 255 / 35%);
+        border-radius: 0.8rem;
+        background: rgb(4 38 81 / 32%);
+    }
+
+    .crm-auth-features {
+        max-width: 29rem;
+        gap: 1rem;
+        margin-top: clamp(1.5rem, 2.6vw, 2.25rem);
+    }
+
+    .crm-auth-features strong,
+    .crm-auth-features span {
+        display: block;
+    }
+
+    .crm-auth-features strong {
+        color: #ffffff;
+        font-size: 0.95rem;
+    }
+
+    .crm-auth-features span {
+        margin-top: 0.35rem;
+        color: #bcd2ec;
+        font-size: 0.78rem;
+    }
+
+    .crm-feature-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.8rem;
+        height: 2.8rem;
+        margin: 0 auto 0.65rem;
+        border: 1px solid #12b9ff;
+        border-radius: 999px;
+        color: #22c5ff;
+        font-size: 1.45rem;
+        box-shadow: 0 0 0 5px rgb(18 185 255 / 8%);
+    }
+
+    .crm-auth-footer {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        color: #bcd2ec;
+        font-size: 0.9rem;
+        margin-top: auto;
+    }
+
+    .crm-auth-input {
+        position: relative;
+    }
+
+    .crm-auth-input-icon {
+        position: absolute;
+        z-index: 1;
+        top: 2.35rem;
+        left: 1.2rem;
+        color: #38648f;
+        font-size: 1.15rem;
+        pointer-events: none;
+    }
+
+    .crm-password-field .crm-auth-input-icon {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .crm-auth-input input[data-flux-control] {
+        padding-left: 3.4rem !important;
+    }
+
+    .crm-auth-surface button[aria-label='Toggle password visibility'] {
+        color: #086fca !important;
+    }
+
+    .crm-auth-surface button[aria-label='Toggle password visibility']:hover {
+        color: #034c96 !important;
+        background: rgb(8 111 202 / 10%) !important;
+    }
+
+    .crm-auth-divider {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        color: #ffffff;
+        font-size: 0.85rem;
+        text-transform: lowercase;
+    }
+
+    .crm-auth-divider::before,
+    .crm-auth-divider::after {
+        flex: 1;
+        height: 1px;
+        background: rgb(255 255 255 / 50%);
+        content: "";
+    }
+
+    .crm-register-button {
+        min-height: 3rem;
+        border: 1px solid #14bcff !important;
+        background: rgb(3 51 108 / 35%) !important;
+        color: #21c2ff !important;
+        font-size: 1rem;
+        font-weight: 700;
+    }
+
+    .crm-auth-divider + .crm-register-button {
+        margin-top: -0.25rem;
+    }
+
+    .crm-register-button:hover {
+        background: rgb(17 153 230 / 20%) !important;
+        color: #ffffff !important;
+    }
+
+    .crm-register-button i {
+        font-size: 1.1rem;
+    }
+
+    .crm-auth-security {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.65rem;
+        color: #d4e6fb;
+        font-size: 0.8rem;
+        line-height: 1.25;
+        margin-top: 0.875rem;
+    }
+
+    .crm-auth-security i {
+        color: #19c1ff;
+        font-size: 1rem;
+    }
+
+    .crm-auth-surface {
+        color: #eaf3ff;
+    }
+
+    .crm-auth-surface [data-flux-label],
+    .crm-auth-surface [data-flux-heading],
+    .crm-auth-surface [data-flux-text] {
+        color: #ffffff !important;
+    }
+
+    .crm-auth-surface h1,
+    .crm-auth-surface h2,
+    .crm-auth-surface h3 {
+        color: #ffffff !important;
+    }
+
+    .crm-auth-surface [data-flux-subheading],
+    .crm-auth-surface [data-flux-description],
+    .crm-auth-surface [data-flux-checkbox] + [data-flux-label],
+    .crm-auth-surface ui-label,
+    .crm-auth-surface label {
+        color: #f4f8ff !important;
+    }
+
+    .crm-auth-surface [data-flux-link],
+    .crm-auth-surface a {
+        color: #ffffff !important;
+    }
+
+    .crm-auth-surface [data-flux-link]:hover,
+    .crm-auth-surface a:hover {
+        color: #8ed8ff !important;
+    }
+
+    .crm-auth-surface [data-flux-checkbox-indicator] {
+        color: #163457;
+    }
+
+    .crm-auth-surface [data-flux-separator] {
+        border-color: rgb(255 255 255 / 48%) !important;
+    }
+
+    .crm-auth-surface [data-flux-subheading] {
+        font-weight: 500;
+    }
+
+    .crm-auth-surface :not(input):not(textarea):not(select).text-zinc-500,
+    .crm-auth-surface :not(input):not(textarea):not(select).text-zinc-600,
+    .crm-auth-surface :not(input):not(textarea):not(select).text-zinc-700,
+    .crm-auth-surface :not(input):not(textarea):not(select).text-zinc-800 {
+        color: #ffffff !important;
+    }
+
+    .crm-auth-surface input[data-flux-control] {
+        min-height: 48px;
+        border-color: #bfd2e8;
+        border-radius: 13px;
+        background: #e4edf7;
+        color: #132d49;
+    }
+
+    .crm-auth-surface input[data-flux-control]::placeholder {
+        color: #516983;
+    }
+
+    @media (max-width: 1023px) {
+        .crm-auth-layout {
+            display: block;
+            padding: 1rem;
+        }
+
+        .crm-auth-main {
+            min-height: calc(100svh - 2rem);
+            justify-content: center !important;
+            align-items: center !important;
+            padding: 2rem 0 !important;
+        }
+
+        .crm-auth-card {
+            width: min(100%, 30rem);
+        }
+
+        .crm-auth-aside-top {
+            display: block;
+        }
+
+        .crm-auth-nav {
+            display: none;
+        }
+
+        .crm-auth-body {
+            background:
+                linear-gradient(90deg, rgb(1 24 53 / 72%), rgb(2 35 71 / 48%)),
+                url('/assets/img/casa.png') center / cover no-repeat,
+                var(--color-crm-navy);
+        }
+    }
+
+    @media (min-width: 1024px) and (max-height: 700px) {
+        .crm-auth-layout {
+            padding-block: 1.5rem;
+        }
+
+        .crm-auth-main {
+            padding-top: 6rem !important;
+        }
+
+        .crm-auth-features > div {
+            height: 6.5rem;
+            padding-block: 0.4rem;
+        }
+
+        .crm-feature-icon {
+            width: 2.4rem;
+            height: 2.4rem;
+            margin-bottom: 0.45rem;
+        }
+
+        .crm-auth-hero-copy {
+            margin-top: 2rem;
+        }
+
+        .crm-auth-features {
+            margin-top: 1.25rem;
+        }
+    }
+
+    @media (max-width: 360px) {
+        .crm-login-options {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+    }
+}

@@ -105,6 +105,11 @@ class Sale extends Model
         return SaleStatus::tryFrom($this->status)?->label() ?? $this->status;
     }
 
+    public function codeLabel(): string
+    {
+        return 'VNT-'.str_pad((string) $this->getKey(), 3, '0', STR_PAD_LEFT);
+    }
+
     public function priceDisplay(): string
     {
         $symbol = strtoupper((string) $this->currency) === 'USD' ? 'US$' : 'S/';

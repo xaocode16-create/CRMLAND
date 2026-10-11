@@ -1,5 +1,5 @@
 <x-layouts::app.sidebar :title="$title ?? null">
-    <flux:main class="crm-main">
+    <main class="crm-main">
         {{ $slot }}
-    </flux:main>
+    </main>
 </x-layouts::app.sidebar>
