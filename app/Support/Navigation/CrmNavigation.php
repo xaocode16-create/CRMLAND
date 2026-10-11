@@ -56,6 +56,7 @@ final class CrmNavigation
         return $this->filterItems([
             $this->item($user, 'Notificaciones', 'bi-bell', 'notifications.index', 'notifications.view'),
             $this->item($user, 'Perfil', 'bi-person-circle', 'profile.edit'),
+            $this->item($user, 'Asistente IA', 'bi-stars', 'assistant', 'dashboard.view'),
             $this->item($user, 'Preferencias', 'bi-sliders', 'appearance.edit'),
             $this->item($user, 'Seguridad', 'bi-shield-lock', 'security.edit'),
         ]);

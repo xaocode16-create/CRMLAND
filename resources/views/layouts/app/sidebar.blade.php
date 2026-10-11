@@ -24,6 +24,7 @@
                 request()->routeIs('users.*') => 'Usuarios',
                 request()->routeIs('roles.*') => 'Roles',
                 request()->routeIs('permissions.*') => 'Permisos',
+                request()->routeIs('assistant') => 'Asistente IA',
                 default => 'Panel',
             };
         @endphp
@@ -59,10 +60,15 @@
                     </form>
 
                     <div class="crm-shell-actions">
-                        <span class="crm-header-ai" aria-label="Asistente IA">
+                        <a
+                            class="crm-header-ai {{ request()->routeIs('assistant') ? 'is-active' : '' }}"
+                            href="{{ route('assistant') }}"
+                            aria-label="Abrir Asistente IA"
+                            wire:navigate
+                        >
                             <i class="bi bi-stars" aria-hidden="true"></i>
                             <span>Asistente IA</span>
-                        </span>
+                        </a>
 
                         @if (collect($accountItems)->contains(fn ($item) => str_contains($item['href'], '/notifications')))
                             <a
